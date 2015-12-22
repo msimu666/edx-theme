@@ -1,0 +1,10 @@
+// import the rest of the application
+@import 'lms/static/sass/lms-main';
+
+// Theming overrides for sample theme
+@import 'overrides-lms-main-variables';
+
+// Theming overrides for sample theme
+@import 'overrides-lms-main-css';
+
+
