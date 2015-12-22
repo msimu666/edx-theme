@@ -1,10 +1,9 @@
-// import the rest of the application
-@import 'lms/static/sass/lms-main-rtl';
-
 // Theming overrides for sample theme
 @import 'overrides-lms-main-rtl-variables';
 
 // Theming overrides for sample theme
 @import 'overrides-lms-main-rtl-css';
 
+// import the rest of the application
+@import 'lms/static/sass/lms-main-rtl';
 
