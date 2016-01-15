@@ -74,8 +74,8 @@ header.global .nav-courseware div .cta,
 .view-survey .action-primary 
 {
     box-shadow: 0 2px 1px 0 #0a4a67;
-    background: #D9853B;
-    color: #fff;
+    background: #D9853B!important;
+    color: white!important;
     margin-right: 5px;
 }
 
@@ -112,8 +112,8 @@ header.global .nav-global div a:focus,
 header.global .nav-global div a:active 
 {
     text-decoration: none;
-    color: white;
-    background: #558C89;
+    color: white!important;
+    background: #558C89!important;
     border-radius: 5px;
 }
 
@@ -127,7 +127,7 @@ header.global .nav-global div a
 {
     display: block;
     padding: 5px;
-    color: white;
+    color: white!important;
     font-weight: 600;
 }
 
@@ -140,35 +140,35 @@ header.global .nav-global div a
 //login
 #login-and-registration-container
 {
-    background: #ECECEA;
+    background: #ECECEA!important;
 }
 
 #login-and-registration-container form.login-form
 {
-    background: #74AFAD;
-    color: white;
+    background: #74AFAD!important;
+    color: white!important;
 }
 
 .login-register .section-title h2, 
 .login-register .section-title section.outside-app h1, 
 section.outside-app .login-register .section-title h1 
 {
-    color: white;
+    color: white!important;
 }
 
 .login-register .section-title.lines .text 
 {
-    background: #558C89;
+    background: #558C89!important;
 }
 
 .login-register .form-field label, .login-register .form-field .tip
 {
-    color: white;
+    color: white!important;
 }
 
 .login-register .toggle-form 
 {
-    background: #74AFAD;
+    background: #74AFAD!important;
     padding-bottom: 10px;
     border-radius: 5px;
 }
@@ -180,39 +180,39 @@ section.outside-app .login-register .section-title h1
 
 .login-register .form-wrapper form 
 {
-    background: #74AFAD;
+    background: #74AFAD!important;
 }
 
 // dashboard
 
 .dashboard .my-courses .listing-courses .course-item .course-container 
 {
-    background: #74AFAD;
+    background: #74AFAD!important;
 }
 
 .dashboard .my-courses .course .details .course-title a, 
 .dashboard .my-courses .course .details .course-title span 
 {
-    color: white;
+    color: white!important;
 }
 
 .dashboard .my-courses .course .details .course-info [class*="info-"] 
 {
-    color: white;
+    color: white!important;
 }
 
 .dashboard .my-courses .course .details .enter-course 
 {
-    background-color: #D9853B;
+    background-color: #D9853B!important;
     border: 1px solid #000;
-    color: white;
+    color: white!important;
 }
 
 .dashboard .my-courses .course .details .course-actions .action 
 {
     border: 1px solid #000;
-    background: #D9853B;
-    color: white;
+    background: #D9853B!important;
+    color: white!important;
 }
 
 .dashboard .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .actions-item .action
@@ -260,12 +260,12 @@ section.outside-app .login-register .section-title h1
 .courses-container .courses .course .course-info .course-code, 
 .courses-container .courses .course .course-info .course-date 
 {
-    color: white;
+    color: white!important;
 }
 
 .courses-container .courses .course .course-info .course-title 
 {
-    color: white;
+    color: white!important;
 }
 
 .courses-container .courses .course .course-image .cover-image:before, 
@@ -290,7 +290,7 @@ section.outside-app .login-register .section-title h1
 
 .view-profile .window-wrap, .view-profile .content-wrapper 
 {
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
 }
 
 .view-profile .profile-self .wrapper-profile-field-account-privacy 
@@ -300,34 +300,34 @@ section.outside-app .login-register .section-title h1
 
 .view-profile .wrapper-profile-sections 
 {
-    background: #74AFAD;
+    background: #74AFAD!important;
     border-radius: 5px;
     min-width: 0!important;
 }
 
 .view-profile .profile-section-one-fields .u-field-username .u-field-value 
 {
-    color: white;
+    color: white!important;
 }
 
 .u-field.mode-placeholder span 
 {
-    color: white;
+    color: white!important;
 }
 
 .view-profile .profile-section-one-fields .u-field-icon 
 {
-    color: white;
+    color: white!important;
 }
 
 .view-profile .profile-section-two-fields .u-field.mode-placeholder .u-field-title 
 {
-    color: white;
+    color: white!important;
 }
 
 .view-profile .profile-section-two-fields .u-field.mode-placeholder i 
 {
-    color: white;
+    color: white!important;
 }
 
 .view-profile .wrapper-profile-section-two 
@@ -337,23 +337,23 @@ section.outside-app .login-register .section-title h1
 
 .u-field.mode-placeholder:hover 
 {
-    border: 2px dashed #558C89;
+    border: 2px dashed #558C89!important;
 }
 
 .view-profile .profile-section-two-fields .u-field.mode-placeholder:hover 
 {
-    border: 2px dashed #558C89;
+    border: 2px dashed #558C89!important;
 }
 
 .view-profile .profile-section-two-fields .u-field.mode-placeholder:hover .u-field-title, 
 .view-profile .profile-section-two-fields .u-field.mode-placeholder:hover i 
 {
-    color: white;
+    color: white!important;
 }
 
 .u-field.mode-placeholder:hover span 
 {
-    color: white;
+    color: white!important;
 }
 
 .u-field-dropdown button.u-field-value-display, 
@@ -361,7 +361,7 @@ section.outside-app .login-register .section-title h1
 .u-field-dropdown button.u-field-value-display:focus, 
 .u-field-dropdown button.u-field-value-display:hover 
 {
-    color: white;
+    color: white!important;
 }
 
 .u-field.editable-toggle.mode-display:hover 
@@ -385,7 +385,7 @@ section.outside-app .login-register .section-title h1
 .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register, 
 .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart 
 {
-    box-shadow: inset 0 1px 0 0 #D9853B;
+    box-shadow: inset 0 1px 0 0 #D9853B!important;
     background-color: #D9853B!important;
     background-image: none!important;
 }
@@ -410,7 +410,7 @@ section.wiki .btn.btn-primary {
     border: 1px solid #D9853B!important;
     border-radius: 5px!important;
     box-shadow: inset 0 1px 0 0 #D9853B!important;
-    color: #fff;
+    color: white!important;
     display: inline-block;
     font-size: inherit;
     font-weight: bold;
@@ -429,17 +429,17 @@ section.wiki .btn.btn-primary {
 
 body.view-in-course 
 {
-    background-color: #ececea;
+    background-color: #ececea!important;
 }
 
 .courseware-search-bar
 {
-    background: rgba(116,175,173,1);
+    background: rgba(116,175,173,1)!important;
 }
 
 .courseware-search-bar form
 {
-    background: #ececea;
+    background: #ececea!important;
     border-radius: 5px;
 }
 .scroll-bar-wrap { clear: left; height: 1.7em; background: rgba(116,175,173,1)!important;}
@@ -471,12 +471,12 @@ body.view-in-course .wiki-wrapper,
 body.view-in-course .teams-wrapper, 
 body.view-in-course .static_tab_wrapper 
 {
-    background: #ececea;
+    background: #ececea!important;
 }
 
 .course-index .accordion
 {
-    overflow-x: hidden
+    overflow-x: hidden;
 }
 
 .main-chapter-wrapper-all
@@ -501,7 +501,7 @@ body.view-in-course .static_tab_wrapper
 {
     white-space: nowrap;
     display: inline-block!important;
-    background: #ECECEA;
+    background: #ECECEA!important;
 }
 
 .course-index .accordion .course-navigation .button-chapter 
@@ -630,7 +630,7 @@ div.info-wrapper section.handouts ol li .course-index .accordion .course-navigat
 .profile-wrapper .course-info>.chapters>section .sections
 {
     background: #74AFAD;
-    color: white;
+    color: white!important;
 }
 
 //navigation override
@@ -704,18 +704,18 @@ div.info-wrapper section.handouts .wrapper-course-material ol.course-tabs li div
 div.info-wrapper section.handouts .wrapper-course-material ol.course-tabs li div.hitarea:focus+h4,
 .wrapper-course-material ol.course-tabs li a:focus
 {
-    color: white;
+    color: white!important;
     background-color: rgba(85,140,137,1)!important;
 }
 //header
 #global-navigation, #global-navigation nav.nav-wrapper
 {
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
 }
 
 #global-navigation nav.nav-wrapper > .user, #global-navigation nav.nav-wrapper > .user button.dropdown
 {    
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
     border-radius: 15px;
 }
 
@@ -728,7 +728,7 @@ div.info-wrapper section.handouts .wrapper-course-material ol.course-tabs li div
 {
     width: 100%;
     height: 100%;
-    background-color: #74AFAD;
+    background-color: #74AFAD!important;
     padding-bottom: 5px;
     border-radius: 5px;
 }
@@ -738,26 +738,26 @@ div.info-wrapper section.handouts .wrapper-course-material ol.course-tabs li div
 }
 #global-navigation > nav.nav-wrapper > .background-navigation-wrapper > .user
 {
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
     border-radius: 15px;
     margin-right: 5px;
 }
 #global-navigation > nav.nav-wrapper .user 
 {
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
     padding-top: 3px;
     border-radius: 15px;
 }
  #global-navigation > nav.nav-wrapper .user button.dropdown
  {
-    background-color: transparent;
+    background-color: transparent!important;
     margin-top: 3px;
  }
 //course navigation
 nav.wrapper-course-material > .course-material > .course-tabs
 {
     margin-left: auto;
-    background-color: rgba(116,175,173,1);
+    background-color: rgba(116,175,173,1)!important;
     border-radius: 5px;
 }
 
@@ -796,7 +796,7 @@ nav.wrapper-course-material > .course-material > .course-tabs
 
 #content.content-wrapper, body.view-in-course .window-wrap
 {
-    background-color: #ECECEA;
+    background-color: #ECECEA!important;
 }
 
 .global h2
@@ -844,7 +844,7 @@ html
 .reverify-blocked .action-primary, 
 .wrapper-msg.wrapper-auto-cert .auto-cert-message .has-actions .msg-actions .btn
 {
-    background: #D9853B;
+    background: #D9853B!important;
     border-radius: 5px;
 }
 
@@ -859,8 +859,8 @@ html
 #forgot-password-modal #password-reset .form-actions.form-third-party-auth button[type="submit"], 
 .login-register .nav-btn, .login-register .button-secondary-login
 {
-    color: white;
-    background: #D9853B;
+    color: white!important;
+    background: #D9853B!important;
     border-radius: 5px;
 }
 
