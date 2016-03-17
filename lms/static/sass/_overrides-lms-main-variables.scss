@@ -14,4 +14,5 @@ $grid-manual-gutter-position:   inside !default;
 $grid-debug-color:              rgba(203, 89, 141, 0.33) !default; // debug color
 
 
-@import '../../../../../static/vendor/susy/susy';
+
+@import '/edx/app/edxapp/edx-platform/static/vendor/susy/susy';
