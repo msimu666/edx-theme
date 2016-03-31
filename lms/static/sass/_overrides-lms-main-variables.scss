@@ -1,3 +1,5 @@
+$static-path: '..';
+
 $bp-screen-sm:  320px !default;
 $bp-screen-md:  768px !default;
 $bp-screen-lg:  1024px !default;
@@ -13,6 +15,8 @@ $grid-gutter-position:          after !default; // how/where to calculate gutter
 $grid-manual-gutter-position:   inside !default;
 $grid-debug-color:              rgba(203, 89, 141, 0.33) !default; // debug color
 
+
+$homepage-bg-image: url('#{$static-path}/images/course-search.jpg');
 
 
 @import '/edx/app/edxapp/edx-platform/node_modules/edx-pattern-library/node_modules/susy/sass/susy';
