@@ -44,12 +44,35 @@ header.global {
     }
 }
 
+.nav-colophon {
+    @include span(4 of 12);
+    
+    ol {
+        text-align: center;
+        margin-bottom: 20px;
+        li {
+            display: inline;
+            margin-right: 20px;
+            a {
+            color: white !important;
+            } 
+        }
+    }
+
+}
+
 .edx-logo-all-white {
     background: $footer-edx-logo-white;
 }
-// #agadgag {
-//     font-size: $h1-font-size;
-// }    
+
+.colophon1 {
+    @include span(4 of 12);
+  }
+
+.footer-about-openedx1 {
+    @include span(4 od 12);
+    float: right !important; 
+  }
 
 // #content.content-wrapper .home .home-header
 // {
