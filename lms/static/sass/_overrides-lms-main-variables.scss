@@ -31,6 +31,8 @@ $grid-debug-color:              rgba(203, 89, 141, 0.33) !default; // debug colo
 
 
 $homepage-bg-image: url('#{$static-path}/images/course-search.jpg');
+$homepage-background: none;
+$body-bg: none;
 $footer-bg: #003535;
 $footer-edx-logo-white: url('#{$static-path}/images/edx-openedx-logo-tag_KO.png');
 
