@@ -1,3 +1,4 @@
+@import '/edx/app/edxapp/edx-platform/node_modules/edx-pattern-library/node_modules/susy/sass/susy';
 // //index page
 html {
     height: 100%;
@@ -6,8 +7,18 @@ html {
 }
 
 body {
-    background: url("../images/course-search.jpg") no-repeat !important;
-    background-size: 100% 100% !important;
+    @include span(full) {
+        background: url("../images/course-search.jpg") no-repeat !important;
+        background-size: 100% 100% !important;
+    }
+    @include susy-breakpoint($bp-screen-md,
+    $susy) {
+        background: none !important;
+    }
+    @include susy-breakpoint($bp-screen-lg,
+    $susy) {
+        background: none !important;
+    }
 }
 
 header.global {
@@ -33,12 +44,6 @@ header.global {
     }
 }
 
-.find-courses {
-    // background: $homepage-bg-image no-repeat center center fixed !important;
-    background-size: cover !important;
-    background: none;
-}
-
 .wrapper.wrapper-footer {
     background: $footer-bg;
     margin-top: 0 !important;
@@ -46,6 +51,16 @@ header.global {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    @include susy-breakpoint($bp-screen-md,
+    $susy) {
+        position: absolute;
+        bottom: 0;
+    }
+    @include susy-breakpoint($bp-screen-lg,
+    $susy) {
+        position: absolute;
+        bottom: 0;
+    }
     #footer-openedx {
         .colophon1 {
             @include span(full) {
@@ -96,7 +111,8 @@ header.global {
         .footer-about-openedx1 {
             @include span(full) {
                 text-align: center;
-            };
+            }
+            ;
             @include susy-breakpoint($bp-screen-md,
             $susy) {
                 @include span(4 of 12 last);
@@ -115,9 +131,19 @@ header.global {
     background: $footer-edx-logo-white;
 }
 
-.content-wrapper {
-    background: none;
-}
+// .content-wrapper {
+//     background: none;
+//     min-height: 100%;
+//     /* equal to footer height */
+//     margin-bottom: -90px;
+// }
+// .content-wrapper:after {
+//   content: "";
+//   display: block;
+// }
+// .wrapper-footer, .content-wrapper:after {
+//   height: 90px; 
+// }
 
 // #content.content-wrapper .home .home-header
 // {
