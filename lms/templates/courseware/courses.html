@@ -32,28 +32,29 @@
   <section class="courses-container">
     % if course_discovery_enabled:
     <div id="discovery-form" role="search" aria-label="course" class="wrapper-search-context">
-      <div id="agadgag">aaaaaaaaa</div>
-      <div id="discovery-message" class="search-status-label"></div>
-      <form class="wrapper-search-input">
-        <label for="discovery-input" class="sr">${_('Search for a course')}</label>
-        <input id="discovery-input" class="discovery-input" placeholder="${_('Search for a course')}" type="text"/>
-        <button type="submit" class="button postfix discovery-submit" aria-label="${_('Search')}">
-          <i class="icon fa fa-search" aria-hidden="true"></i>
-          <div aria-live="polite" aria-relevant="all">
-            <div id="loading-indicator" class="loading-spinner hidden">
-              <i class="icon fa fa-spinner fa-spin"></i>
-              <span class="sr">${_('Loading')}</span>
+      <div class="welcome-message">${_('Welcome to Open edX')}</div>
+        <!-- <div id="discovery-message" class="search-status-label"></div> -->
+        <div class="search-status-label">${_('Find courses about')}</div>
+        <form class="wrapper-search-input">
+          <label for="discovery-input" class="sr">${_('Search for a course')}</label>
+          <input id="discovery-input" class="discovery-input" placeholder="${_('Search for a course')}" type="text"/>
+          <button type="submit" class="button postfix discovery-submit" aria-label="${_('Search')}">
+            <i class="icon fa fa-search" aria-hidden="true"></i>
+            <div aria-live="polite" aria-relevant="all">
+              <div id="loading-indicator" class="loading-spinner hidden">
+                <i class="icon fa fa-spinner fa-spin"></i>
+                <span class="sr">${_('Loading')}</span>
+              </div>
             </div>
-          </div>
-        </button>
-      </form>
-    </div>
+          </button>
+        </form>
+      </div>
 
     <div id="filter-bar" class="filters hide-phone is-collapsed">
     </div>
     % endif
 
-    <div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
+    <div class="courses${' homepage-no-course-discovery' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
       <ul class="courses-listing">
         %for course in courses:
         <li class="courses-listing-item">
@@ -64,13 +65,16 @@
     </div>
 
 
-    % if course_discovery_enabled:
+    
+  <!--
+  % if course_discovery_enabled:
     <aside aria-label="${_('Refine Your Search')}" class="search-facets phone-menu">
       <h2 class="header-search-facets">${_('Refine Your Search')}</h2>
       <section class="search-facets-lists">
       </section>
     </aside>
-    % endif
+    % endif 
+    -->
 
   </section>
 </section>
