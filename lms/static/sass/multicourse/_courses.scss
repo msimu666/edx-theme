@@ -38,7 +38,7 @@ $facet-background-color: #007db8;
     text-transform: none;
 
     //STATE: hover
-    &::hover {
+    &:hover {
       background: none;
     }
   }
@@ -57,19 +57,7 @@ $facet-background-color: #007db8;
 
       // CASE: Course Discovery Search enabled
       &:not(.no-course-discovery) {
-        @include span-columns(9);
-
-        @include media($bp-medium) {
-          @include span-columns(8);
-        }
-
-        @include media($bp-large) {
-          @include span-columns(8);
-        }
-
-        @include media($bp-huge) {
-          @include span-columns(9);
-        }
+        @include span-columns(12);
 
         .courses-listing .courses-listing-item {
           @include media($bp-medium) {
@@ -231,23 +219,23 @@ $facet-background-color: #007db8;
         line-height: normal;
         @include pad(30px 50px);
         @include media($bp-tiny) {
-          @include font-size(10);
+          font-size: 5vw;
         }
         @include media($bp-medium) {
-          @include font-size(20);
+          font-size: 5vw;
         }
     }
     .search-status-label {
         @extend %t-title3;
         min-height: $course-search-input-height;
-        @include span-columns(3);
+        @include span-columns(4);
         font-family: 'Source Sans Pro', $sans-serif;
         font-weight: lighter;
         @include pad(0 0 0 50px);
     }
     .wrapper-search-input {
         @extend %ui-depth0;
-        @include span-columns(8);
+        @include span-columns(7);
         @include omega();
     }
   }
@@ -293,21 +281,23 @@ $facet-background-color: #007db8;
 
     .fa-search {
       color: #22B493;
-
-      &:hover, &:focus {
-        color: #E4F6F2;
-      }
+      font-size: 40px;
     }
 
     //STATE: hover, focus
     &:hover, &:focus {
-      // background: $m-blue-d5;
+      background: none;
+      box-shadow: none;
+      outline: none;
+      .fa-search {
+        color: #8AD7C6;
+      }
     }
   }
 
   .loading-spinner {
     @include transition(all $tmg-f1 ease-out 0s);
-    background: $blue;
+    background: transparent;
     position: absolute;
     top: ($baseline*0.7); // same as padding rule for .discovery-submit
   }

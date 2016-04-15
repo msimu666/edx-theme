@@ -2,15 +2,19 @@
 
 // @import 'base/base';
 
+
 // import the rest of the application
 @import 'lms/static/sass/lms-main';
 
 // Theming overrides for sample theme
 @import 'overrides-lms-main-variables';
 
-// Theming overrides for sample theme
-@import 'overrides-lms-main-css';
+// Theming overrides for ee theme
 
+@import 'overrides-lms-main-css';
 
 @import 'multicourse/courses';
 
+@import 'views/homepage';
+
+@import 'multicourse/home';
