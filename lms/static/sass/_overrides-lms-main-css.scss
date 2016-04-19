@@ -1,5 +1,41 @@
 @import '/edx/app/edxapp/edx-platform/node_modules/edx-pattern-library/node_modules/susy/sass/susy';
 // //index page
+.ee-h1 { 
+    font-family: $h1-font-family;
+    font-style: $h1-font-style;
+    font-size: $h1-font-size;
+}
+
+.ee-h2 { 
+    font-family: $h2-font-family;
+    font-size: $h2-font-size;
+    font-weight: $h2-font-weight;
+}
+
+.ee-h3 { 
+    font-family: $h3-font-family;
+    font-style: $h3-font-style;
+    font-size: $h3-font-size;
+}
+
+.ee-h4 { 
+    font-family: $h4-font-family;
+    font-size: $h4-font-size;
+}
+
+.ee-h5 { 
+    font-family: $h5-font-family;
+    font-weight: $h5-font-weight;
+    font-size: $h5-font-size;
+}
+
+.ee-h6 { 
+    font-family: $h6-font-family;
+    font-weight: $h6-font-weight;
+    font-size: $h6-font-size;
+}
+
+
 html {
     height: 100%;
     background: url("../images/course-search.jpg") no-repeat !important;
@@ -42,9 +78,9 @@ header.global {
         }
         &:hover {
             a {
-                color: #22B493 !important;
+                color: $ee-green !important;
             }
-            border-bottom: 8px solid #22B493 !important;
+            border-bottom: 8px solid $ee-green !important;
         }
     }
 }

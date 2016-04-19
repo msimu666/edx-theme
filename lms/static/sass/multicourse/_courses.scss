@@ -232,6 +232,12 @@ $facet-background-color: #007db8;
         font-family: 'Source Sans Pro', $sans-serif;
         font-weight: lighter;
         @include pad(0 0 0 50px);
+        @include media($bp-tiny) {
+          font-size: 3vw;
+        }
+        @include media($bp-medium) {
+          font-size: 3vw;
+        }
     }
     .wrapper-search-input {
         @extend %ui-depth0;
@@ -247,18 +253,18 @@ $facet-background-color: #007db8;
     // @include border-radius(3px);
     @include padding-right(55px);
     border: none;
-    border-bottom: 2px solid #22B493;
+    border-bottom: 2px solid $ee-green;
     width: 100%;
     height: $course-search-input-height;
     color: $black;
     font-style: normal;
-    background-color: #E4F6F2;
+    background-color: $ee-green-lightest;
     border-radius: initial;
     //STATE: focus
     &:focus {
       @extend %no-outline;
       box-shadow: none;
-      border-color: #22B493;
+      border-color: $ee-green;
     }
   }
 
@@ -280,7 +286,7 @@ $facet-background-color: #007db8;
     text-shadow: none;
 
     .fa-search {
-      color: #22B493;
+      color: $ee-green;
       font-size: 40px;
     }
 
@@ -290,7 +296,7 @@ $facet-background-color: #007db8;
       box-shadow: none;
       outline: none;
       .fa-search {
-        color: #8AD7C6;
+        color: $ee-green-lighter;
       }
     }
   }
