@@ -37,7 +37,8 @@ site_status_msg = get_site_status_msg(course_id)
 % endif
 </%block>
 
-  <header id="global-navigation" class="global ${"slim" if course else ""}" >
+  <!-- <header id="global-navigation" class="global ${"slim" if course else ""}" > -->
+  <header id="global-navigation" class="global" >
     <nav class="nav-wrapper" aria-label="${_('Global')}">
     <div class="background-navigation-wrapper">
     <h1 class="logo">
@@ -159,6 +160,21 @@ site_status_msg = get_site_status_msg(course_id)
     </div>
   </nav>
 </header>
+<script>
+// Set the height of the main-container dynamically so the footer is
+// fixed to the bottom.
+$(window).on('resize', function() {
+    $('.content-wrapper').css('min-height', $(window).height() - $('header').height() - $('.wrapper-footer').outerHeight(true));
+});
+
+$(document).ready(function() {
+    // Triggering the resize event to fix the footer to the bottom at the
+    // document load.
+    // A hack per file keeps the doctor away.
+    $(window).trigger('resize');
+});
+</script>
+
 % if course:
 <!--[if lte IE 9]>
 <div class="ie-banner" aria-hidden="true">${_('<strong>Warning:</strong> Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.').format(chrome_link='<a href="https://www.google.com/chrome" target="_blank">Chrome</a>', ff_link='<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>')}</div>

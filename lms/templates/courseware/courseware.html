@@ -3,7 +3,6 @@
 <%!
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import escapejs
-from microsite_configuration import page_title_breadcrumbs
 from django.conf import settings
 from edxnotes.helpers import is_feature_enabled as is_edxnotes_enabled
 %>
@@ -15,15 +14,17 @@ from edxnotes.helpers import is_feature_enabled as is_edxnotes_enabled
 </%def>
 
 <%block name="bodyclass">view-in-course view-courseware courseware ${course.css_class or ''}</%block>
+
 <%block name="title"><title>
     % if section_title:
-${page_title_breadcrumbs(section_title, course_name())}
+${static.get_page_title_breadcrumbs(section_title, course_name())}
     % else:
-${page_title_breadcrumbs(course_name())}
+${static.get_page_title_breadcrumbs(course_name())}
     %endif
 </title></%block>
 
 <%block name="header_extras">
+
 % for template_name in ["image-modal"]:
 <script type="text/template" id="${template_name}-tpl">
     <%static:include path="common/templates/${template_name}.underscore" />
@@ -56,7 +57,7 @@ ${page_title_breadcrumbs(course_name())}
 <%static:css group='style-student-notes'/>
 % endif
 
-<%block name="nav_skip">${"#seq_content" if section_title else "#course-content"}</%block>
+<%block name="nav_skip">${"#content" if section_title else "#content"}</%block>
 
 <%include file="../discussion/_js_head_dependencies.html" />
   ${fragment.head_html()}
@@ -73,10 +74,14 @@ ${page_title_breadcrumbs(course_name())}
   <%static:js group='discussion'/>
   % if settings.FEATURES.get('ENABLE_COURSEWARE_SEARCH'):
     <%static:require_module module_name="js/search/course/course_search_factory" class_name="CourseSearchFactory">
-        var courseId = $('#courseware-search-results').data('courseId');
+        var courseId = $('.courseware-results').data('courseId');
         CourseSearchFactory(courseId);
     </%static:require_module>
   % endif
+
+  <%static:require_module module_name="js/bookmarks/bookmarks_factory" class_name="BookmarksFactory">
+    BookmarksFactory();
+  </%static:require_module>
 
   <%include file="../discussion/_js_body_dependencies.html" />
   % if staff_access:
@@ -112,6 +117,8 @@ ${fragment.foot_html()}
 
 </%block>
 
+<div class="message-banner" aria-live="polite"></div>
+
 % if default_tab:
   <%include file="/courseware/course_navigation.html" />
 % else:
@@ -123,27 +130,35 @@ ${fragment.foot_html()}
 
 % if disable_accordion is UNDEFINED or not disable_accordion:
     <div class="course-index">
-      % if settings.FEATURES.get('ENABLE_COURSEWARE_SEARCH'):
-        <div id="courseware-search-bar" class="search-bar courseware-search-bar" role="search" aria-label="Course">
-          <form>
-            <label for="course-search-input" class="sr">${_('Course Search')}</label>
-            <div class="search-field-wrapper">
-              <input id="course-search-input" type="text" class="search-field"/>
-              <button type="submit" class="search-button">
-                ${_('search')} <i class="icon fa fa-search" aria-hidden="true"></i>
+
+      <div class="wrapper-course-modes">
+
+          <div class="courseware-bookmarks-button" data-bookmarks-api-url="${bookmarks_api_url}">
+              <button type="button" class="bookmarks-list-button is-inactive" aria-pressed="false">
+                  ${_('Bookmarks')}
               </button>
-              <button type="button" class="cancel-button" aria-label="${_('Clear search')}">
-                <i class="icon fa fa-remove" aria-hidden="true"></i>
-              </button>
+          </div>
+
+          % if settings.FEATURES.get('ENABLE_COURSEWARE_SEARCH'):
+            <div id="courseware-search-bar" class="search-bar courseware-search-bar" role="search" aria-label="Course">
+              <form>
+                <label for="course-search-input" class="sr">${_('Course Search')}</label>
+                <div class="search-field-wrapper">
+                  <input id="course-search-input" type="text" class="search-field"/>
+                  <button type="submit" class="search-button">
+                    ${_('search')} <i class="icon fa fa-search" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="cancel-button" aria-label="${_('Clear search')}">
+                    <i class="icon fa fa-remove" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-      % endif
+          % endif
+
+      </div>
 
       <div class="accordion">
-        <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
-          <div class="scroll-bar"></div>
-        </div>
         <nav class="course-navigation" aria-label="${_('Course')}">
           % if accordion.strip():
             ${accordion}
@@ -152,154 +167,9 @@ ${fragment.foot_html()}
           % endif
         </nav>
       </div>
-      <script type="text/javascript">
-        var text_width = function(text, font) {
-                      // re-use canvas object for better performance
-                      var canvas = text_width.canvas || (text_width.canvas = document.createElement("canvas"));
-                      var context = canvas.getContext("2d");
-                      context.font = font;
-                      var metrics = context.measureText(text);
-                      return metrics.width;
-                  };
-        var menu_container = $(".container .course-wrapper .accordion");
-        var main_buttons = menu_container.find(".main-chapter-button");
-        var adjust_width = function(clicked, timeout)
-        {
-            setTimeout(function()
-            {
-              var buttonWidth = parseInt(clicked.width());
-              var submenu = $("#"+clicked.attr("aria-controls"));
-              var submenuWidth = parseInt(submenu.width());
-              var maxWidth = Math.max(buttonWidth,submenuWidth);
-              clicked.width(maxWidth);
-              submenu.width(maxWidth);
-                
-            }, timeout);
-        }
-        var adjust_offset= function()
-        {
-          setTimeout(function()
-          {
-            var openSubmenu = $(".chapter-content-container.is-open");
-            var clickedMenu = openSubmenu.parent().find(".main-chapter-button.is-open")
-            var openSubmenuOffset = clickedMenu[0].offsetLeft+parseInt(clickedMenu.width());
-            var limit = parseInt(scrollPane.width());
 
-            if (openSubmenuOffset<=parseInt(clickedMenu.width()))
-              openSubmenu.css("left",0);
-            else if (openSubmenuOffset>limit)
-              openSubmenu.css("right",0);
-            else
-            {
-              openSubmenu.css("left","auto");
-              openSubmenu.css("right","auto");
-            }
-          }, 5);
-          
-        }
-        main_buttons.on("click", function()
-        {
-          adjust_width($(this), 5);
-          adjust_offset();
-          
-        });
-        setTimeout(function()
-        {
-          adjust_width(menu_container.find(".main-chapter-button.is-open"), 5);
-          adjust_offset();
-        }, 200);
-
-        var scrollPane = $( ".course-index .accordion" ),
-        scrollContent = scrollPane.find(".course-navigation");
-   
-      //build slider
-      var scrollbar = $( ".scroll-bar" ).slider({
-      slide: function( event, ui ) 
-      {
-        if ( scrollContent.width() > scrollPane.width() ) {
-          scrollContent.css( "margin-left", Math.round(
-            ui.value / 100 * ( scrollPane.width() - scrollContent.width() )
-          ) + "px" );
-        } else {
-          scrollContent.css( "margin-left", 0 );
-        }
-        var openSubmenu = $(".chapter-content-container.is-open");
-        var clickedMenu = openSubmenu.parent().find(".main-chapter-button.is-open")
-        var openSubmenuOffset = clickedMenu[0].offsetLeft+parseInt(clickedMenu.width());
-        var limit = parseInt(scrollPane.width());
-
-        if (openSubmenuOffset<=parseInt(clickedMenu.width()))
-          openSubmenu.css("left",0);
-        else if (openSubmenuOffset>limit)
-          openSubmenu.css("right",0);
-        else
-          {
-            openSubmenu.css("left","auto");
-            openSubmenu.css("right","auto");
-          }
-
-      }
-    });
-    var handleHelper = scrollbar.find( ".ui-slider-handle" )
-    .mousedown(function() {
-      scrollbar.width( handleHelper.width() );
-    })
-    .mouseup(function() {
-      scrollbar.width( "100%" );
-    })
-    .append( "<span class='ui-icon ui-icon-grip-dotted-vertical'></span>" )
-    .wrap( "<div class='ui-handle-helper-parent'></div>" ).parent();
- 
-    //change overflow to hidden now that slider handles the scrolling
-    scrollPane.css( "overflow", "hidden" );
- 
-    //size scrollbar and handle proportionally to scroll distance
-    function sizeScrollbar() {
-      var remainder = scrollContent.width() - scrollPane.width();
-      var proportion = remainder / scrollContent.width();
-      var handleSize = scrollPane.width() - ( proportion * scrollPane.width() );
-      scrollbar.find( ".ui-slider-handle" ).css({
-        width: handleSize,
-        "margin-left": -handleSize / 2
-      });
-      handleHelper.width( "" ).width( scrollbar.width() - handleSize );
-    }
- 
-    //reset slider value based on scroll content position
-    function resetValue() {
-      var remainder = scrollPane.width() - scrollContent.width();
-      var leftVal = scrollContent.css( "margin-left" ) === "auto" ? 0 :
-        parseInt( scrollContent.css( "margin-left" ) );
-      var percentage = Math.round( leftVal / remainder * 100 );
-      scrollbar.slider( "value", percentage );
-    }
- 
-    //if the slider is 100% and window gets larger, reveal content
-    function reflowContent() {
-        var showing = scrollContent.width() + parseInt( scrollContent.css( "margin-left" ), 10 );
-        var gap = scrollPane.width() - showing;
-        if ( gap > 0 ) {
-          scrollContent.css( "margin-left", parseInt( scrollContent.css( "margin-left" ), 10 ) + gap );
-        }
-    }
- 
-    //change handle position on window resize
-    $( window ).resize(function() {
-      resetValue();
-      sizeScrollbar();
-      reflowContent();
-      adjust_width(menu_container.find(".main-chapter-button.is-open"), 5);
-      adjust_offset();
-    });
-    //init scrollbar size
-    setTimeout( sizeScrollbar, 10 );
-      </script>
     </div>
 % endif
-  % if settings.FEATURES.get('ENABLE_COURSEWARE_SEARCH'):
-    <section id="courseware-search-results" class="search-results courseware-search-results" data-course-id="${course.id}">
-    </section>
-  % endif
     <section class="course-content" id="course-content" role="main" aria-label="Content">
         % if getattr(course, 'entrance_exam_enabled') and \
            getattr(course, 'entrance_exam_minimum_score_pct') and \
@@ -333,6 +203,13 @@ ${fragment.foot_html()}
 
       ${fragment.body_html()}
     </section>
+
+    <section class="courseware-results-wrapper">
+      <div id="loading-message" aria-live="polite" aria-relevant="all"></div>
+      <div id="error-message" aria-live="polite"></div>
+      <div class="courseware-results search-results" data-course-id="${course.id}" data-lang-code="${language_preference}"></div>
+    </section>
+
   </div>
 </div>
 <div class="container-footer">
