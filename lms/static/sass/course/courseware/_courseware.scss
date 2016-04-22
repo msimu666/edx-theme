@@ -5,6 +5,11 @@
 html {
   height: 100%;
   max-height: 100%;
+
+  body{
+      background: url("../images/courseware.png") no-repeat !important; //background only for courseware
+      background-size: 100% 100% !important;
+  }
 }
 
 html.video-fullscreen {
@@ -98,8 +103,8 @@ html.video-fullscreen {
 
 // TO-DO should this be content wrapper?
 .course-wrapper {
+  margin: 40px auto !important;
   position: relative;
-  margin-top: $baseline !important;
 
   .courseware-results-wrapper {
     display: none;
@@ -107,6 +112,8 @@ html.video-fullscreen {
 
   .course-content,
   .courseware-results-wrapper {
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     @extend .content;
     padding: ($baseline*2) 3%; // percent allows for smaller padding on mobile
     line-height: 1.6;
@@ -392,7 +399,7 @@ html.video-fullscreen {
       }
     }
     p {
-      margin-bottom: lh();
+      margin-bottom: 0;
     }
 
     .sequential-status-message {
@@ -499,10 +506,11 @@ html.video-fullscreen {
       }
 
       .vert > .xblock-student_view {
+        border-bottom: 0;
+        padding: 0;
+        margin: 0;
+
         @extend .clearfix;
-        border-bottom: 1px solid #ddd;
-        margin-bottom: ($baseline*0.75);
-        padding: 0 0 15px;
       }
 
       .vert > .xblock-student_view.is-hidden {
