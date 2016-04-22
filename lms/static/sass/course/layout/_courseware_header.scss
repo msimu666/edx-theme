@@ -17,10 +17,13 @@
     @include border-top-radius(4px);
     @include clearfix();
     padding: ($baseline*0.75) 0 ($baseline*0.75) 0;
-
+    li:first-of-type {
+      line-height: 1.4;
+    }
     li {
       @include float(left);
       list-style: none;
+      margin-left: 4%;
 
       &.prominent {
         @include margin-right(16px);
@@ -39,7 +42,6 @@
         @extend %t-regular;
         font-size: 16px !important;
         font-weight: 600 !important;
-        margin-left: 20px !important;
         padding: 0 !important;
         border-bottom: 8px solid transparent;
         color: $black !important;
