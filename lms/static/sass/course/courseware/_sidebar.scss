@@ -23,7 +23,7 @@
     // we're targetting the .class now, instead of the #id
     .accordion {
         margin-top: 5px;
-        overflow-y: scroll;
+        overflow-y: auto;
         height: 600px;
 
         @extend %t-copy-sub1;

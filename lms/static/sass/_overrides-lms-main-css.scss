@@ -121,7 +121,7 @@ header.global {
             a {
                 color: $ee-green !important;
             }
-            border-bottom: 8px solid $ee-green !important;
+            border-bottom: 8px solid $ee-green;
         }
     }
 }
@@ -180,6 +180,10 @@ header.global {
             }
         }
         .footer-about-openedx1 {
+            p {
+                @include float(right);
+            }
+            
             @include span(full) {
                 text-align: center;
             }
@@ -207,6 +211,8 @@ header.global {
 
 .xmodule_display.xmodule_SequenceModule {
     .sequence-nav{
+        display: none;
+        
         .sequence-list-wrapper{
             background-color: none;
             background-image: none;

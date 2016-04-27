@@ -55,22 +55,31 @@
         &:hover,
         &:focus {
           transition: none !important;
-          color: $ee-green !important;
-          border-bottom: 8px solid $ee-green !important;
+          color: $ee-blue !important;
+          border-bottom: 8px solid $ee-blue !important;
         }
 
         &.active {
-          border-bottom: 8px solid $ee-green !important;
+          border-bottom: 8px solid $ee-blue !important;
           background-color: transparent;
-          color: $ee-green !important;
+          color: $ee-blue !important;
 
           &:hover,
           &:focus {
-            color: $ee-green !important;
+            color: $ee-blue !important;
           }
         }
       }
     }
+  }
+}
+
+.nav-global li {
+  &:hover {
+    border-bottom: 8px solid $ee-blue !important;
+  }
+  a:hover {
+    color: $ee-blue !important;
   }
 }
 
