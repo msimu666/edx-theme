@@ -58,7 +58,7 @@ $learn-more-horizontal-position: calc(50% - 100px); // calculate the left positi
 
         img {
           width: 100%;
-          height: auto;
+          height: inherit;
         }
 
         .learn-more {
