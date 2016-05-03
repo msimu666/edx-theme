@@ -38,6 +38,23 @@ section.container {
         background: $white;
         box-sizing: border-box !important;
         padding-left: 50px !important;
+        .inner-wrapper {
+            margin-right: $baseline * 2!important;
+            &>section {
+                margin: 40px 0;
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-bottom: 15px;
+                }
+                p + p {
+                    margin-top: 0;
+                }
+            }
+        }
     }
     .course-sidebar {
         background: $white;
@@ -77,6 +94,10 @@ section.container {
         font-size: 40px;
         line-height: 1;
         font-family: $source-sans-pro;
+        @media screen and (max-width: $bp-screen-lg) {
+            font-size: 30px;
+            line-height: 1.3;
+        }
         &:hover {
             text-decoration: none;
             color: $white;
@@ -112,7 +133,7 @@ section.container {
             .important-dates-item-title {
                 @include span-columns(4);
                 text-align: right;
-                line-height: 1.8;
+                line-height: 2.4;
                 @include pad(0 10px 0 0);
                 box-sizing: border-box;
             }
@@ -127,8 +148,31 @@ section.container {
 
 .course-staff {
     @include outer-container;
-    .teacher {
-        @include span-columns(6);
-        @include omega(2n);
+    h3 {
+        @include fill-parent();
     }
+    .teacher {
+        p {
+            font-size: 12px;
+            overflow: auto;
+        }
+        margin-top: $baseline 0;
+        box-sizing: border-box;
+        @include span-columns(6);
+        @include omega();
+        @media screen and (min-width: $bp-screen-lg) {
+            @include pad(0 ($baseline*2.5) 0 0);
+        }
+        @media screen and (max-width: $bp-screen-lg) {
+            @include pad(0 ($baseline/2) 0 0);
+        }
+    }
+}
+
+.course-info .details .inner-wrapper .course-staff .teacher .teacher-image {
+    height: auto;
+    max-height: 130px;
+    overflow: hidden;
+    border: none;
+    @include span-columns(3 of 6);
 }
