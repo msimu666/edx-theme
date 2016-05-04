@@ -209,8 +209,8 @@ $learn-more-horizontal-position: calc(50% - 100px); // calculate the left positi
   }
 
   @include media($bp-huge) {
-    @include span-columns(4); // 3 of 12
-    @include omega(4n);
+    @include span-columns(4); // 4 of 12
+    @include omega(3n);
   }
 }
 
