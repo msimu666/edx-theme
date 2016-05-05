@@ -25,8 +25,9 @@ from django.core.urlresolvers import reverse
           <div class="course-search">
             <form method="get" action="/courses">
 
-              <label><span class="sr">${_("Search for a course")}</span>
-                <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
+              <label><span class="sr">${_("your favorite subject")}</span>
+                <input class="search-input" name="search_query" type="text" placeholder="${_("your favorite subject")}" 
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'your favorite subject'" ></input>
               </label>
               <button class="search-button" type="submit">
                 <i class="icon fa fa-search" aria-hidden="true"></i><span class="sr">${_("Search")}</span>
