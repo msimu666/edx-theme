@@ -23,7 +23,7 @@ $course-search-input-height: ($button-size);
             @include clearfix();
             position: relative;
             margin: 0 auto;
-            padding: ($baseline*3);
+            padding: ($baseline*1.5);
             padding-bottom: 0;
             max-width: ($baseline*60);
             animation: none;
@@ -36,7 +36,7 @@ $course-search-input-height: ($button-size);
             position: relative;
             box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.5);
             background: $white;
-            padding: ($baseline) ($baseline*1.5);
+            padding: ($baseline) ($baseline*2.5);
             min-height: ($baseline*6);
             vertical-align: top;
             .search-input-and-label {
@@ -44,7 +44,7 @@ $course-search-input-height: ($button-size);
                 .search-status-label {
                     @extend %t-title3;
                     min-height: $course-search-input-height;
-                    width: 27%;
+                    width: 28%;
                     margin-right: 2%;
                     @include float(left);
                     font-family: $h2-font-family;
@@ -61,7 +61,7 @@ $course-search-input-height: ($button-size);
                     }
                 }
                 .course-search {
-                    width: 71%;
+                    width: 70%;
                     @include float(right);
                     @include media($bp-medium) {
                         font-size: 4vw;
@@ -130,6 +130,7 @@ $course-search-input-height: ($button-size);
             }
             .course-search {
                 padding: ($baseline) 0;
+                position: relative;
                 .search-input {
                     @include float(left);
                     @include padding-right($button-size);
@@ -162,6 +163,7 @@ $course-search-input-height: ($button-size);
                     @extend %t-icon3;
                     @extend %t-strong;
                     position: absolute;
+                    right: 0;
                     border: none;
                     box-shadow: none;
                     padding-right: 0;
