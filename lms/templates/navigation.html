@@ -172,7 +172,11 @@ $(document).ready(function() {
     // document load.
     // A hack per file keeps the doctor away.
     $(window).trigger('resize');
+    
+    // hack to change default select value on register page without editing edx-platform code
+    $('.input-inline option:contains("--")').text('');
 });
+
 </script>
 
 % if course:

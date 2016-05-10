@@ -13,7 +13,7 @@ $sm-btn-linkedin: #0077b5;
     min-height: 100%;
     width: 100%;
     $third-party-button-height: ($baseline*1.75);
-    max-width: 450px;
+    max-width: 550px;
     margin-top: $baseline*1.5;
     h2 {
         @extend %t-title5;
@@ -36,6 +36,12 @@ $sm-btn-linkedin: #0077b5;
     input:-webkit-autofill:focus {
         -webkit-box-shadow: white, 0 0 0 50px white inset;
         -webkit-text-fill-color: #333;
+    }
+    label.error {
+        color: $ee-error-state-text !important;
+    }
+    input.error {
+        border: 2px solid $ee-error-state-text !important;
     }
     .header {
         @include outer-container;
@@ -158,6 +164,9 @@ $sm-btn-linkedin: #0077b5;
         .login-providers {
             text-align: center;
         }
+        .toggle-form {
+            display: none; // hide this field in EE theme
+        }
     }
     .login-form {
         .section-title {
@@ -188,8 +197,22 @@ $sm-btn-linkedin: #0077b5;
         }
     }
     .register-form {
-        &:focus {
-            outline: none;
+        .textarea-mailing_address,
+        .textarea-goals {
+            display: none; // hide this field in EE theme
+        }
+        .input-block {
+            border: none;
+            box-shadow: none;
+            border-bottom: 2px solid $ee-green;
+            padding: 0 ($baseline*0.5);
+            &:focus {
+                outline: none;
+                background: $ee-green-lightest;
+            }
+        }
+        .note {
+            display: none;
         }
     }
     %bold-label {
@@ -211,8 +234,22 @@ $sm-btn-linkedin: #0077b5;
         position: relative;
         width: 100%;
         margin: ($baseline/2) 0 0 0;
+        &>select {
+            border: none;
+            border-bottom: 2px solid $ee-green;
+            background: $select-arrow no-repeat right $white;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            option {
+                background: $ee-green-lightest;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
         &.select-year_of_birth {
-            @include margin-left(15px);
+            @include margin-left(0);
+            float: right;
         }
         &.select-gender,
         &.select-year_of_birth {
@@ -258,7 +295,12 @@ $sm-btn-linkedin: #0077b5;
                 display: inline-block;
             }
             a {
-                font-family: $sans-serif;
+                font-family: $source-sans-pro;
+                font-size: 14px;
+                color: $ee-green;
+                &:hover {
+                    color: $ee-green;
+                }
             }
         }
         .field-link {
@@ -269,7 +311,8 @@ $sm-btn-linkedin: #0077b5;
             color: $ee-green;
             font-weight: $font-regular;
             text-decoration: none !important; // needed but nasty
-            font-family: $source-sans-pro;;
+            font-family: $source-sans-pro;
+            ;
         }
         input,
         select,
@@ -469,13 +512,18 @@ $sm-btn-linkedin: #0077b5;
     }
     .submission-error,
     .system-error {
-        box-shadow: inset 0 -1px 2px 0 tint($red, 85%);
-        border-bottom: 3px solid shade($red, 10%);
-        background: tint($red, 95%);
+        padding: 0 ($baseline*1.25);
+        box-shadow: none;
+        border-bottom: none;
+        background: none;
         .message-title {
-            color: shade($red, 10%) !important;
+            color: $ee-error-state-text !important;
+            font-size: 14px;
+            font-weight: normal;
         }
-        .message-copy {}
+        .message-copy {
+            display: none;
+        }
     }
     .submission-success {
         box-shadow: inset 0 -1px 2px 0 tint($green, 85%);
