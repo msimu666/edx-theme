@@ -27,10 +27,10 @@ else:
         % for section in chapter['sections']:
         <div class="menu-item ${'active' if 'active' in section and section['active'] else ''} ${'graded'  if 'graded' in section and section['graded'] else ''}">
             <a href="${reverse('courseware_section', args=[course_id, chapter['url_name'], section['url_name']])}">
-                <p class="ee-p">${section['display_name']} ${Text(_('{span_start}current section{span_end}')).format(
+                <h6>${section['display_name']} ${Text(_('{span_start}current section{span_end}')).format(
                         span_start=HTML('<span class="sr">'),
                         span_end=HTML('</span>'),
-                    ) if 'active' in section and section['active'] else ''}</p>
+                    ) if 'active' in section and section['active'] else ''}</h6>
                 <%
                 if section.get('due') is None:
                     due_date = ''
@@ -38,7 +38,6 @@ else:
                     formatted_string = get_time_display(section['due'], due_date_display_format, coerce_tz=settings.TIME_ZONE_DISPLAYED_FOR_DEADLINES)
                     due_date = '' if len(formatted_string)==0 else _('due {date}').format(date=formatted_string)
                 %>
-
                 ## There is behavior differences between
                 ## rending of sections which have proctoring/timed examinations
                 ## and those that do not.
