@@ -172,9 +172,6 @@ $(document).ready(function() {
     // document load.
     // A hack per file keeps the doctor away.
     $(window).trigger('resize');
-    
-    // hack to change default select value on register page without editing edx-platform code
-    $('.input-inline option:contains("--")').text('');
 });
 
 </script>
@@ -186,3 +183,18 @@ $(document).ready(function() {
 % endif
 
 <%include file="help_modal.html"/>
+
+<script type="text/javascript">
+  // decrease max-width on login-register container if on login page
+  setTimeout(function(){
+    if(window.location.href.indexOf('/login') > -1) {
+      $('.login-register').css("max-width",450);
+    } else {
+      $('.login-register').css("max-width",550);
+    }
+  }, 100);
+  /*$(document).on('load','select', function(){
+  // hack to change default select value on register page without editing edx-platform code
+      $(this).text('');
+    });*/
+</script>

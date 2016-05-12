@@ -93,8 +93,11 @@ p {
 
 html {
     height: 100%;
-    background: url("../images/course-search.jpg") no-repeat !important;
-    background-size: 100% 100% !important;
+    background: url("../images/course-search.jpg") no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     @include susy-media($bp-screen-lg,
     $susy) {
         height: auto;
@@ -104,8 +107,11 @@ html {
 
 body {
     @include span(full) {
-        background: url("../images/course-search.jpg") no-repeat !important;
-        background-size: 100% 100% !important;
+        background: url("../images/course-search.jpg") no-repeat center center fixed !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 }
 
@@ -140,37 +146,18 @@ header.global {
     padding-left: 0 !important;
     padding-right: 0 !important;
     #footer-openedx {
+        @include outer-container;
         .colophon1 {
-            @include span(full) {
-                text-align: center;
-            }
-            @include susy-media($bp-screen-md,
-            $susy) {
-                @include span(4 of 12 first);
-                text-align: left;
-            }
-            @include susy-media($bp-screen-lg,
-            $susy) {
-                @include span(4 of 12 first);
-                text-align: left;
+            @include span-columns(4);
+            @media screen and (max-width: 768px) {
+                @include fill-parent();
+                margin-left: $baseline;
             }
         }
         .nav-colophon {
-            @include span(full) {
-                text-align: center;
-            }
-            @include susy-media($bp-screen-md,
-            $susy) {
-                @include span(4 of 12 first);
-                text-align: left;
-            }
-            @include susy-media($bp-screen-lg,
-            $susy) {
-                @include span(4 of 12 first);
-                text-align: left;
-            }
+            @include span-columns(4);
             .copyright {
-                color: white !important;
+                color: $white !important;
                 text-align: center;
             }
             ol {
@@ -184,23 +171,29 @@ header.global {
                     }
                 }
             }
+            @media screen and (max-width: 768px) {
+                @include fill-parent();
+                .copyright {
+                    text-align: left;
+                    margin-left: $baseline;
+                }
+                ol {
+                    text-align: left;
+                    margin-left: $baseline;
+                }
+            }
         }
         .footer-about-openedx1 {
             p {
                 @include float(right);
             }
-            @include span(full) {
-                text-align: center;
-            }
-            @include susy-media($bp-screen-md,
-            $susy) {
-                @include span(4 of 12 last);
-                text-align: right;
-            }
-            @include susy-media($bp-screen-lg,
-            $susy) {
-                @include span(4 of 12 last);
-                text-align: right;
+            @include span-columns(4);
+            @media screen and (max-width: 768px) {
+                @include fill-parent();
+                p {
+                    float: left;
+                    margin-left: $baseline;
+                }
             }
         }
     }

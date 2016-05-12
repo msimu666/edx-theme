@@ -178,7 +178,6 @@ $sm-btn-linkedin: #0077b5;
             border: none;
             box-shadow: none;
             border-bottom: 2px solid $ee-green;
-            padding: 0;
             &:focus {
                 outline: none;
             }
@@ -363,9 +362,11 @@ $sm-btn-linkedin: #0077b5;
     }
     .input-block {
         width: 100%;
+        font-size: 14px;
     }
     .input-inline {
         display: inline;
+        font-size: 14px;
     }
     .desc {
         @include transition(color 0.15s ease-in-out 0s);

@@ -23,7 +23,7 @@ $course-search-input-height: ($button-size);
             @include clearfix();
             position: relative;
             margin: 0 auto;
-            padding: ($baseline*1.5);
+            padding: ($baseline*1.5) 0;
             padding-bottom: 0;
             max-width: ($baseline*60);
             animation: none;
