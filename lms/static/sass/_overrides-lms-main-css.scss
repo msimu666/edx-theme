@@ -1,11 +1,13 @@
 @import '/edx/app/edxapp/edx-platform/node_modules/edx-pattern-library/node_modules/susy/sass/susy';
 // //index page
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,300,400,600");
+*{
+    outline: 0;
+}
 h1 {
     font-family: "Georgia" !important;
     font-style: italic !important;
 }
-
 h2 {
     font-family: 'Source Sans Pro', sans-serif !important;
     font-weight: 300 !important;
@@ -36,8 +38,6 @@ h6 {
     font-weight: 700 !important;
     font-size: 10px;
     text-transform: uppercase !important;
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
 }
 
 p {
