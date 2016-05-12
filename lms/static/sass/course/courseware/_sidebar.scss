@@ -114,7 +114,7 @@
                         @extend %t-strong;
                         margin: 0;
                         background: inherit;
-                        padding: 10px 0;
+                        //padding: 10px 0;
 
                         a {
                             @extend %t-action3;
@@ -125,7 +125,11 @@
                             border-radius: 0;
                             font-family: $sans-serif;
                             color: $base-font-color;
-                            padding-left:45px;
+                            padding-left:20px;
+
+                            h6{
+                                font-size: 12px;
+                            }
 
                             p {
 
@@ -177,18 +181,15 @@
                             }
                         }
 
-                        &.active {
-                            background: #3E51B5;
-                            padding: 9px 0 7px 0;
+                        &.active {   
                             font-family: 'Source Sans Pro', sans-serif;
                             font-weight: 600;
                             font-size: 10px;
 
                             a {
                                 background: none !important;
-                                color: #fff;
                                 border-radius: 0;
-                                padding-left:45px;
+                                padding-left:20px;
                                 @extend %t-ultrastrong;
 
                                 p{
@@ -203,6 +204,20 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.sequence-nav {
+    .sequence-list-wrapper {
+        .nav-item{
+            margin: 0;
+            padding: 9px 0 7px 45px;
+            cursor: pointer;
+        }
+        .active{
+            background: #3E51B5;
+            color: #fff;
         }
     }
 }
