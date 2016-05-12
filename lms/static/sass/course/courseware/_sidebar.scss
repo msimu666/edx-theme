@@ -64,11 +64,11 @@
                         left: auto;
                         top: 0 !important;
                         color: #3E51B5;
-                        margin-left: 20px;
+                        margin-left: $baseline;
                         font-size: $body-font-size;
                     }
                     h5{
-                        padding-right: 20px;
+                        padding-right: $baseline;
                     }
                 }
 
@@ -121,11 +121,11 @@
                             @extend %t-strong;
                             position: relative;
                             display: block;
-                            padding: ($baseline/4) ($baseline/2);
+                            padding: ($baseline/2) ($baseline);
                             border-radius: 0;
                             font-family: $sans-serif;
                             color: $base-font-color;
-                            padding-left:20px;
+                            padding-left: $baseline;
 
                             h6{
                                 font-size: 12px;
@@ -189,7 +189,7 @@
                             a {
                                 background: none !important;
                                 border-radius: 0;
-                                padding-left:20px;
+                                padding-left: $baseline;
                                 @extend %t-ultrastrong;
 
                                 p{
