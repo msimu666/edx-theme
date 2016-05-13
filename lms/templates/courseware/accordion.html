@@ -79,3 +79,12 @@ else:
 % for chapter in toc:
     ${make_chapter(chapter)}
 % endfor
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var el = $(".menu-item.active ").find("a");
+    $(el).click(function(e) {
+        e.preventDefault();
+    });
+  });
+</script>
