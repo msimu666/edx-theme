@@ -135,9 +135,9 @@ from openedx.core.djangolib.markup import Text, HTML
   % if settings.FEATURES.get('ENABLE_DASHBOARD_SEARCH'):
     <div id="dashboard-search-bar" class="search-bar dashboard-search-bar" role="search" aria-label="Dashboard">
       <form>
-        <label for="dashboard-search-input">${_('Search Your Courses')}</label>
+        <h4 for="dashboard-search-input">${_('Search Your Courses')}</h4>
         <div class="search-field-wrapper">
-          <input id="dashboard-search-input" type="text" class="search-field"/>
+          <input id="dashboard-search-input" type="text" class="search-field" placeholder="Search"/>
           <button type="submit" class="search-button" aria-label="${_('Search')}">
             <i class="icon fa fa-search" aria-hidden="true"></i>
           </button>

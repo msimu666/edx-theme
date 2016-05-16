@@ -8,6 +8,25 @@
 // * +Dashboard - Banner
 // +Dashboard - Sidebar
 // ====================
+body.view-dashboard {
+    background: url("../images/dashboard-bigger.jpg") no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .nav-global li {
+        &:hover {
+            border-bottom: 8px solid $ee-grass-green !important;
+            a {
+                color: $ee-grass-green !important;
+            }
+        }
+        a:hover {
+            color: $ee-grass-green !important;
+        }
+    }
+}
+
 .dashboard {
     @include clearfix();
     padding: ($baseline*2) 0 $baseline 0;
@@ -52,7 +71,7 @@
         @include margin-left(flex-gutter());
         width: flex-grid(3);
         margin-top: ($baseline*2);
-        border-top: 3px solid $blue;
+        border-top: 3px solid transparent;
         padding: $baseline 0;
         .user-info {
             @include clearfix();
@@ -186,7 +205,7 @@
         box-sizing: border-box;
         .wrapper-header-courses {
             border-bottom: none;
-            margin-bottom: $baseline;
+            margin: ($baseline*2.5) 0 ($baseline*1.5);
             .header-courses {
                 @extend %t-title5;
                 @include padding-right($baseline/2);
@@ -227,23 +246,26 @@
         // ====================
         // UI: course list
         .listing-courses {
-            @extend %ui-no-list;
             @include outer-container;
             .course-item {
                 @include span-columns(6);
-                @include omega();
+                &:nth-of-type(even) {
+                    margin-right: 0;
+                }
                 min-height: 265px;
                 max-height: 266px;
                 margin-bottom: $baseline;
                 border-bottom: none;
                 padding-bottom: $baseline;
-
                 .course-container {
                     border: none;
                     border-radius: 3px;
                     // CASE: Xseries associated course
                     .label-xseries-association {
-                        @include margin($baseline/2, $baseline/5, 0, $baseline/2);
+                        @include margin($baseline/2,
+                        $baseline/5,
+                        0,
+                        $baseline/2);
                         .xseries-icon {
                             @include float(left);
                             @include margin-right($baseline*0.4);
@@ -362,14 +384,16 @@
                 width: flex-grid(6);
                 padding: 0;
                 [class*="info-"] {
-                    color: $gray-d1;
-                    @extend %t-title6;
-                    display: inline-block;
+                    line-height: initial;
+                    padding: 0;
+                    @include float(left);
+                    font-size: 12px;
+                    font-weight: 600;
+                    padding-bottom: 6px;
                 }
                 .info-date-block {
-                    @extend %t-title7;
-                    color: $gray; // WCAG 2.0 AA compliant
-                    display: block;
+                    clear: left;
+                    font-weight: normal;
                 }
             }
             .wrapper-course-actions {
@@ -385,16 +409,19 @@
                     @include box-sizing(border-box);
                     @include margin-right($baseline/2);
                     @include float(right);
-                    min-width: ($baseline*2);
-                    color: $gray-l1;
-                    border-radius: 3px;
-                    padding: 12px;
-                    border: 1px solid $white;
+                    color: $ee-blue;
                     text-align: center;
+                    padding: 0;
+                    margin-right: 0;
+                    font-family: $source-sans-pro;
+                    font-size: 14px;
+                    border: none;
+                    margin-top: $baseline/2;
                     &:hover,
                     &:focus {
-                        color: $gray-d3;
-                        border: 1px solid $gray-l4;
+                        color: $ee-blue;
+                        border: none;
+                        text-decoration: none;
                     }
                     // STATE: is-disabled
                     &.is-disabled {
@@ -519,10 +546,25 @@
                 }
             }
             .enter-course {
-                @extend %btn-pl-white-base;
+                color: $white;
+                width: 100%;
+                padding: 10px;
+                text-transform: none;
+                font-weight: 400;
+                letter-spacing: normal;
+                background: $ee-blue;
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                height: 30px;
+                line-height: 0.7;
+                font-size: 14px;
+                font-family: $source-sans-pro;
                 @include float(right);
-                &.archived {
-                    @extend %btn-pl-default-base;
+                &:hover,
+                &:focus {
+                    background: $ee-blue-lighter;
+                    border: none;
                 }
             }
         }
