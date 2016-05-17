@@ -148,6 +148,7 @@ $course-search-input-height: ($button-size);
                     font-family: $h2-font-family;
                     font-weight: $h2-font-weight;
                     font-size: $h2-font-size;
+                    line-height: initial;
                     //STATE: focus
                     &:focus {
                         @extend %no-outline;
