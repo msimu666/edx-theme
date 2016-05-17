@@ -51,7 +51,7 @@
 
                 .group-heading {
                     color: #3c3c3c;
-                    padding: 0 20px 0 20px;
+                    padding: 0 25px;
 
                     @extend %t-title6;
                     position: relative;
@@ -60,15 +60,15 @@
 
                     .icon {
                         position: absolute;
-                        right: 20px !important;
+                        //right: 20px !important;
                         left: auto;
                         top: 0 !important;
                         color: #3E51B5;
-                        margin-left: $baseline;
-                        font-size: $body-font-size;
+                        //margin-left: $baseline;
+                        font-size: 18px;
                     }
                     h5{
-                        padding-right: $baseline;
+                        padding-left: 30px;
                     }
                 }
 
@@ -121,15 +121,22 @@
                             @extend %t-strong;
                             position: relative;
                             display: block;
-                            padding: ($baseline/2) ($baseline);
+                            padding: ($baseline/2) 25px ($baseline/2) 50px;
                             border-radius: 0;
                             font-family: $sans-serif;
                             color: $base-font-color;
-                            padding-left: $baseline;
+
+                            .sub-icon{
+                                position: absolute;
+                                left: auto;
+                                top: auto;
+                                color: #3E51B5;
+                                font-size: 18px;
+                            }
 
                             h6{
                                 font-size: 12px;
-                                margin: 0;
+                                margin: 0 0 0 30px;
                             }
 
                             p {
@@ -138,7 +145,7 @@
                                     @extend %t-action4;
                                     @extend %t-regular;
                                     display: block;
-                                    margin: 0;
+                                    margin: 0 0 0 30px;
                                     color: $gray-d1;
 
                                     &:empty {
@@ -190,7 +197,7 @@
                             a {
                                 background: none !important;
                                 border-radius: 0;
-                                padding-left: $baseline;
+                                padding: ($baseline/2) 25px ($baseline/2) 50px;
                                 @extend %t-ultrastrong;
 
                                 p{
@@ -213,7 +220,7 @@
     .sequence-list-wrapper {
         .nav-item{
             margin: 0;
-            padding: 9px 0 7px 45px;
+            padding: 9px 25px 7px 80px;
             cursor: pointer;
         }
         .active{

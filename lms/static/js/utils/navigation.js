@@ -77,8 +77,8 @@ var edx = edx || {},
                         .children('.group-heading')
                         .removeClass('active')
                         .find('.icon')
-                            .addClass('fa-chevron-left')
-                            .removeClass('fa-chevron-down');
+                            .addClass('fa-caret-right')
+                            .removeClass('fa-caret-down');
 
                     toggle
                         .next('.chapter-content-container')
@@ -99,6 +99,7 @@ var edx = edx || {},
                 var sectionEl = $(section),
                     firstLink = sectionEl.find('.menu-item').first(),
                     buttonEl = $(button);
+                    menuItem = $('.menu-item.active');
 
                 buttonEl
                     .addClass('is-open')
@@ -108,8 +109,13 @@ var edx = edx || {},
                     .children('.group-heading')
                     .addClass('active')
                     .find('.icon')
-                        .removeClass('fa-chevron-left')
-                        .addClass('fa-chevron-down');
+                        .removeClass('fa-caret-right')
+                        .addClass('fa-caret-down');
+
+                menuItem
+                    .find('.sub-icon')
+                        .removeClass('fa-caret-right')
+                        .addClass('fa-caret-down');
 
                 sectionEl
                     .addClass('is-open')
