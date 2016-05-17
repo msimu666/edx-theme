@@ -288,6 +288,37 @@ body.view-dashboard {
             }
         }
     }
+    .mocked-courses {
+        h4 {
+            margin-top: $baseline*2.5;
+        }
+        .mocked-course {
+            margin-bottom: $baseline*1.5;
+            img {
+                margin-top: $baseline*0.5;
+            }
+            h6 {
+                margin: ($baseline*0.5) 0;
+            }
+            a {
+                color: #fff;
+                width: 100%;
+                font-weight: 400;
+                background: $ee-green;
+                height: 30px;
+                font-size: 14px;
+                font-family: $source-sans-pro, "Open Sans", Verdana, Geneva, sans-serif;
+                float: right;
+                margin-bottom: $baseline;
+                text-align: center;
+                line-height: 2;
+                &:hover {
+                    background: $ee-green-lighter;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }
 
 // +Dashboard - Course
