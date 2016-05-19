@@ -327,9 +327,9 @@ $facet-background-color: $ee-green;
 
   .loading-spinner {
     @include transition(all $tmg-f1 ease-out 0s);
-    background: $blue;
+    background: $ee-green;
     position: absolute;
-    top: ($baseline*0.7); // same as padding rule for .discovery-submit
+    top: 0; // same as padding rule for .discovery-submit
   }
 }
 
