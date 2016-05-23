@@ -351,8 +351,10 @@ body.view-dashboard {
                     border-radius: initial;
                     border: none;
                     border-bottom: none;
+                    height: inherit;
                     .course-image {
                         width: 100%;
+                        height: inherit;
                     }
                 }
                 // "enrolled as" status

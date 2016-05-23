@@ -31,8 +31,7 @@
   <section class="courses-container">
     % if course_discovery_enabled:
     <div class="find-courses-sidebar">
-      <div id="discovery-form" role="search" aria-label="course" class="wrapper-search-context">
-        <!-- <div id="discovery-message" class="search-status-label"></div> -->
+      <div role="search" aria-label="course" class="wrapper-search-context">
         <h4>${_('Refine your search')}</h4>
         <form class="wrapper-search-input">
           <label for="discovery-input" class="sr">${_('Keywords')}</label>
@@ -56,8 +55,9 @@
     </div>
     
     % endif
-
+    
     <div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
+    <div id="discovery-form"><h2 id="discovery-message" class="search-status-label"></h2></div>
       <ul class="courses-listing">
         %for course in courses:
         <li class="courses-listing-item">
