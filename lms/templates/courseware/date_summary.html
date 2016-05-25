@@ -1,0 +1,18 @@
+<div class="date-summary-container">
+    <div class="date-summary date-summary-${css_class}">
+        % if title:
+          <h6 class="heading">${title}</h6>
+        % endif
+        % if date:
+          <div class="date">${date}</div>
+        % endif
+        % if description:
+          <p class="description">${description}</p>
+        % endif
+        % if link and link_text:
+          <span class="date-summary-link">
+              <a href="${link}">${link_text}</a>
+          </span>
+        % endif
+    </div>
+</div>
