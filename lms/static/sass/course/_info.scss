@@ -1,4 +1,35 @@
+.course-info-top-navbar-container {
+    height: 55px;
+    background: white;
+    box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.3);
+    .course-info-top-navbar {
+        max-width: 1180px;
+        margin: 0 auto;
+        height: inherit;
+        line-height: 3.5;
+        font-family: $source-sans-pro;
+        span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .last-accessed-link {
+            float: right;
+            color: white;
+            display: inline-block;
+            padding: 0px 15px;
+            margin: 5px;
+            height: 80%;
+            line-height: 2.8;
+            background-color: $ee-blue;
+            &:hover {
+                background: $ee-blue-lighter;
+            }
+        }
+    }
+}
+
 .home {
+    display: none !important; // hidden (not removed) as per design
     @include clearfix();
     max-width: 1140px;
     margin: -($baseline*2) auto $baseline*2;

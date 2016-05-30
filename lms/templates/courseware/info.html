@@ -9,8 +9,7 @@ from courseware.courses import get_course_info_section, get_course_date_summary
 from openedx.core.djangoapps.self_paced.models import SelfPacedConfiguration
 from openedx.core.djangolib.markup import Text, HTML
 %>
-
-<%block name="pagetitle">${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}</%block>
+    <%block name="pagetitle">${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}</%block>
 
 <%block name="headextra">
 <%static:css group='style-course-vendor'/>
@@ -52,6 +51,16 @@ from openedx.core.djangolib.markup import Text, HTML
 </%block>
 
 <%block name="bodyclass">view-in-course view-course-info ${course.css_class or ''}</%block>
+<div class="course-info-top-navbar-container">
+  <div class="course-info-top-navbar">
+    <span>Dashboard > </span>
+    <span>${course.display_name_with_default} > </span>
+    <span class="current-active-part"></span>
+    % if last_accessed_courseware_url:
+        <a href="${last_accessed_courseware_url}" class="last-accessed-link">${_("Resume Course")}</a>
+    % endif
+  </div>
+</div>
 <section class="container">
   <div class="home">
     <div class="page-header-main">
@@ -106,3 +115,7 @@ from openedx.core.djangolib.markup import Text, HTML
     % endif
   </div>
 </section>
+
+<script type="text/javascript">
+  $('.current-active-part').text($('.course-tabs').find('.active').clone().children().remove().end().text());
+</script>
