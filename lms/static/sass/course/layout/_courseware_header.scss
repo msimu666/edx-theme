@@ -1,3 +1,11 @@
+nav.discussion.wrapper-course-material {
+  ol {
+    li {
+      margin-top: 0;
+    }
+  }
+}
+
 .wrapper-course-material {
   @include clearfix();
   @include box-sizing(border-box);
@@ -10,7 +18,7 @@
 
   .course-material{
     @extend %inner-wrapper;
-    padding-top: 43px !important;
+    padding-top: 10px !important;
   }
 
   ol.course-tabs {
@@ -23,7 +31,8 @@
     li {
       @include float(left);
       list-style: none;
-      margin-left: 4%;
+      margin-left: 3%;
+      margin-top: 33px;
 
       &.prominent {
         @include margin-right(16px);
