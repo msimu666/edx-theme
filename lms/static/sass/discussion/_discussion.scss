@@ -242,8 +242,8 @@ body.discussion {
   .discussion-column {
     @include float(right);
     @include box-sizing(border-box);
-    width: 68%;
-    max-width: 800px;
+    width: 66%;
+    max-width: 850px;
     min-height: 500px;
     border: 1px solid #aaa;
     border-radius: 3px;
@@ -351,6 +351,10 @@ body.discussion {
   .discussion-submit-post {
     @include blue-button;
     @include float(left);
+    background: $ee-blue;
+    &:hover{
+      background: $ee-blue-lighter;
+    }
   }
 
   .wmd-button {
@@ -445,6 +449,7 @@ body.discussion {
   section.discussion {
     clear: both;
     padding-top: $baseline;
+    max-width: 1180px !important;
 
     .threads {
     }
@@ -720,3 +725,6 @@ body.discussion {
   }
 }
 
+#discussion-container {
+  max-width: 1180px;
+}

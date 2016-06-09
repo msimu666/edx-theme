@@ -142,8 +142,9 @@ header.global {
         }
         .nav-colophon {
             @include span-columns(4);
-            padding-left: $baseline*2.5;
+            @include pad(0 0 0 ($baseline*2.5));
             box-sizing: border-box;
+            margin-left: 4.35765% !important;
             .copyright {
                 color: $white !important;
                 text-align: center;
@@ -176,6 +177,9 @@ header.global {
             @include span-columns(4);
             float: right;
             text-align: right;
+            .powered-by {
+                float: right !important;
+            }
             @media screen and (max-width: 768px) {
                 @include fill-parent();
                 p {
