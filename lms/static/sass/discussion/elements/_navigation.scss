@@ -243,6 +243,7 @@
 
 .forum-nav-thread-link {
   display: block;
+  position: relative;
   padding: ($baseline/4) ($baseline);
 
   &.is-active {
@@ -255,7 +256,7 @@
 
     .forum-nav-thread-comments-count {
       background-color: $gray-l4;
-      color: $base-font-color;
+      color: white;
 
       &:after {
         border-right-color: transparent;
@@ -313,19 +314,24 @@
 
 .forum-nav-thread-wrapper-1 {
   @extend %forum-nav-thread-wrapper;
-  width: 80%;
+  width: 90%;
 }
 
 .forum-nav-thread-wrapper-2 {
   @extend %forum-nav-thread-wrapper;
-  width: 13%;
+  width: 8%;
   line-height: 25px;
   @include text-align(right);
+}
+
+.new-forum-nav {
   .fa-chevron-right {
     color: white;
     font-size: 12px;
+    position: absolute;
+    right: 16px;
+    top: 12px;
   }
-
 }
 
 .forum-nav-thread-title {
@@ -354,6 +360,7 @@
   background: transparent !important;
   display: inline !important;
   font-size: 14px;
+  color: white;
 }
 
 .forum-nav-thread-comments-count {
