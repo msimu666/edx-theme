@@ -47,6 +47,9 @@ body.discussion, .discussion-module {
       display: inline-block;
       vertical-align: top;
       width: flex-grid(11,12);
+      .username {
+        color: $ee-blue;
+      }
     }
 
     .response-header-actions {

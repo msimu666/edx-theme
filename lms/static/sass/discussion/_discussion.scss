@@ -3,6 +3,18 @@
 // NOTE: this file is deprecated, and we should not continue to add to this file. Use other partials as appropriate.
 
 body.discussion {
+  .course-info-top-navbar {
+    .new-post-btn {
+      float: right;
+    color: white;
+    display: inline-block;
+    padding: 0px 15px;
+    margin: 5px;
+    height: 80%;
+    line-height: 2.8;
+    background-color: #3E51B5;
+    }
+  }
 
   .course-tabs .right {
     @include float(right);

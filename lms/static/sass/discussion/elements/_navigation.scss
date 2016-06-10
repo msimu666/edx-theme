@@ -235,7 +235,7 @@
       color: $ee-blue;
 
       &:after {
-        border-right-color: tint($ee-blue, 90%);;
+        border-right-color: transparent;;
       }
     }
   }
@@ -258,7 +258,7 @@
       color: $base-font-color;
 
       &:after {
-        border-right-color: $gray-l4;
+        border-right-color: transparent;
       }
     }
   }
@@ -271,7 +271,7 @@
       color: $white;
 
       &:after {
-        border-right-color: $ee-blue;
+        border-right-color: transparent;
       }
     }
   }
@@ -319,7 +319,13 @@
 .forum-nav-thread-wrapper-2 {
   @extend %forum-nav-thread-wrapper;
   width: 13%;
+  line-height: 25px;
   @include text-align(right);
+  .fa-chevron-right {
+    color: white;
+    font-size: 12px;
+  }
+
 }
 
 .forum-nav-thread-title {
@@ -344,16 +350,21 @@
   @extend %forum-nav-thread-wrapper-2-content;
 }
 
+.forum-nav-thread-comments-count-redesign {
+  background: transparent !important;
+  display: inline !important;
+  font-size: 14px;
+}
+
 .forum-nav-thread-comments-count {
   @extend %forum-nav-thread-wrapper-2-content;
   @extend %t-weight4;
   position: relative;
-  @include margin-left($baseline/4);
-  margin-bottom: ($baseline/4); // Because tail is position: absolute
-  border-radius: 2px;
-  padding: ($baseline/10) ($baseline/5);
-  min-width: 2em; // Fit most comment counts but allow expansion if necessary
-  background-color: $gray-l4;
+  margin: 0; // Because tail is position: absolute
+  border-radius: 0;
+  padding: 0;
+  min-width: 1em; // Fit most comment counts but allow expansion if necessary
+  background-color: transparent;
 
   // Speech bubble tail
   &:after {
@@ -365,8 +376,9 @@
     width: 0;
     height: 0;
     border-style: solid;
+    border-right-color: transparent;
     @include border-width(0, ($baseline/4), ($baseline/4), 0);
-    @include border-color(transparent, $gray-l4, transparent, transparent);
+    @include border-color(transparent, transparent, transparent, transparent);
   }
 }
 
