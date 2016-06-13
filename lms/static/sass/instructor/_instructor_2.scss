@@ -1,0 +1,29 @@
+// instructor-left-nav
+.instructor-left-nav {
+    .instructor-nav {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .nav-item {
+            position: relative;
+            padding: 15px;
+            font-size: 20px;
+            font-family: $source-sans-pro;
+            display: block;
+            a {
+                color: black;
+            }
+            i {
+              position: absolute;
+              right: 10px;
+              color: white;
+            }
+            &.active {
+                background: $ee-blue;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}
