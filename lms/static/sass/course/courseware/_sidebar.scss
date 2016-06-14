@@ -32,7 +32,7 @@
 
             .button-chapter {
                 padding: 10px 0 8px 0 !important;
-                background: #ECEEF8 !important;
+                background: none !important;
                 box-shadow: none !important;
 
                 @include transition(all $tmg-s3 ease-in-out);

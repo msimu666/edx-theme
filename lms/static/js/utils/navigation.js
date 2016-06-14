@@ -77,8 +77,8 @@ var edx = edx || {},
                         .children('.group-heading')
                         .removeClass('active')
                         .find('.icon')
-                            .addClass('fa-caret-right')
-                            .removeClass('fa-caret-down');
+                            .addClass('fa-angle-right')
+                            .removeClass('fa-angle-down');
 
                     toggle
                         .next('.chapter-content-container')
@@ -109,13 +109,13 @@ var edx = edx || {},
                     .children('.group-heading')
                     .addClass('active')
                     .find('.icon')
-                        .removeClass('fa-caret-right')
-                        .addClass('fa-caret-down');
+                        .removeClass('fa-angle-right')
+                        .addClass('fa-angle-down');
 
                 menuItem
                     .find('.sub-icon')
-                        .removeClass('fa-caret-right')
-                        .addClass('fa-caret-down');
+                        .removeClass('fa-angle-right')
+                        .addClass('fa-angle-down');
 
                 sectionEl
                     .addClass('is-open')

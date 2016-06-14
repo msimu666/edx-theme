@@ -70,9 +70,24 @@
     var el = $(".sequence-nav");
     $(".menu-item.active").after(el);
   });
-  $(".nav-item").click(function(){
+
+  $(document).on("click", ".nav-item" ,function(){
     $(".nav-item").removeClass("active");
     $(this).addClass("active");
+  });
+
+  $(document).on("click", ".sequence-bottom .sequence-nav-button.button-previous" ,function(){
+    var $item = $("#sequence-list li p.active");
+    $item.removeClass("active");
+    var $prev = $item.parents("li").prev();
+    $prev.find("p").addClass("active");
+  });
+
+  $(document).on("click", ".sequence-bottom .sequence-nav-button.button-next" ,function(){
+    var $item = $("#sequence-list li p.active");
+    $item.removeClass("active");
+    var $next = $item.parents("li").next();
+    $next.find("p").addClass("active");
   });
 
 </script>
