@@ -217,6 +217,9 @@ header.global {
         &:hover {
             background: #B2B9E1;
         }
+        &:focus {
+            box-shadow: none !important;
+        }
     }
     .sequence-bottom {
         .sequence-nav-button {
