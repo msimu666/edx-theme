@@ -6,17 +6,20 @@
         list-style: none;
         .nav-item {
             position: relative;
-            padding: 15px;
             font-size: 20px;
             font-family: $source-sans-pro;
             display: block;
             a {
                 color: black;
+                display: block;
+                padding: 15px;
+                box-sizing: border-box;
             }
             i {
-              position: absolute;
-              right: 10px;
-              color: white;
+                display: inline-block;
+                position: absolute;
+                color: white;
+                right: 15px;
             }
             &.active {
                 background: $ee-blue;
