@@ -84,6 +84,14 @@ from django.core.urlresolvers import reverse
 
 <script language="JavaScript" type="text/javascript"></script>
 
+<div class="course-info-top-navbar-container">
+  <div class="course-info-top-navbar">
+    <span>Dashboard > </span>
+    <span>${course.display_name_with_default} > </span>
+    <span class="current-active-part"></span>
+  </div>
+</div>
+
 <section class="container" style="max-width:1180px;">
   <div class="instructor-left-nav"></div>
   <div class="instructor-dashboard-wrapper-2">
@@ -94,7 +102,7 @@ from django.core.urlresolvers import reverse
         %endif
       </div>
 
-    <h1>${_("Instructor Dashboard")}</h1>
+    <h2>${_("Instructor Dashboard")}</h2>
 
       %if analytics_dashboard_message:
         <div class="wrapper-msg urgency-low is-shown">
@@ -133,5 +141,7 @@ $('.nav-item').click(function(event) {
   $('.instructor-nav li').removeClass('active');
   $(this).addClass('active');
 });
-</script>
 
+$('.current-active-part').text($('.course-tabs').find('.active').clone().children().remove().end().text());
+
+</script>

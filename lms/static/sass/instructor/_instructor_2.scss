@@ -30,3 +30,74 @@
         }
     }
 }
+
+// view - course info
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#course_info {
+    @include outer-container;
+    .basic-wrapper {
+        @include span-columns(6);
+        h3 {
+            font-size: 24px !important;
+        }
+        .list-input {
+            list-style: none;
+            padding-left: 0;
+            li {
+                @include outer-container;
+                padding: ($baseline/4) 0;
+                label,
+                b {
+                    font-family: $source-sans-pro !important;
+                    font-weight: normal;
+                }
+                b {
+                    @include span-columns(7);
+                    background: $ee-blue-lightest;
+                    padding: $baseline/4;
+                    box-sizing: border-box;
+                }
+                label {
+                    @include span-columns(5);
+                }
+            }
+        }
+    }
+    .enrollment-wrapper-and-task-container {
+        @include span-columns(6);
+        @include pad(0 0 0 ($baseline*2));
+        box-sizing: border-box;
+        h3 {
+            font-size: 24px !important;
+        }
+        *:not(h3) {
+            font-family: $source-sans-pro !important;
+        }
+        .enrollment-wrapper {
+            @include fill-parent();
+            table tbody {
+              td {
+                padding-bottom: $baseline/4;
+              }
+                td:first-child {
+                    width: 100px;
+                }
+                td:nth-child(2) {
+                    width: auto;
+                }
+            }
+            .tip {
+                margin-top: $baseline;
+            }
+        }
+        .running-tasks-container.action-type-container {
+            @include fill-parent();
+            .no-pending-tasks-message {
+                margin-top: 20px;
+                p {
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
