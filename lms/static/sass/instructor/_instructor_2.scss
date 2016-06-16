@@ -33,6 +33,15 @@
 
 // view - course info
 // --------------------
+.instructor-dashboard-wrapper-2 {
+    .wrapper-msg.urgency-low.is-shown {
+        background: $ee-blue-lightest;
+        a {
+            color: $ee-blue;
+        }
+    }
+}
+
 .instructor-dashboard-wrapper-2 section.idash-section#course_info {
     @include outer-container;
     .basic-wrapper {
@@ -76,9 +85,9 @@
         .enrollment-wrapper {
             @include fill-parent();
             table tbody {
-              td {
-                padding-bottom: $baseline/4;
-              }
+                td {
+                    padding-bottom: $baseline/4;
+                }
                 td:first-child {
                     width: 100px;
                 }
