@@ -102,7 +102,7 @@ from django.core.urlresolvers import reverse
         %endif
       </div>
 
-    <h2>${_("Instructor Dashboard")}</h2>
+    <h2 class="instructor-page-top-heading"></h2>
 
       %if analytics_dashboard_message:
         <div class="wrapper-msg urgency-low is-shown">
@@ -136,12 +136,16 @@ from django.core.urlresolvers import reverse
 $( document ).ready(function() {
     $('.instructor-nav').appendTo('.instructor-left-nav');
     $('.nav-item a').append('<i class="fa fa-chevron-right" aria-hidden="true"></i>');
-});    
+});  
+
+// on click event for left sidebar click (adding 'active' class)  
 $('.nav-item').click(function(event) {
   $('.instructor-nav li').removeClass('active');
   $(this).addClass('active');
+  $('.instructor-page-top-heading').html($('.instructor-nav').find('.active').text());
 });
 
+// get current active tab from top navbar (breadcrumbs hackity-hack)
 $('.current-active-part').text($('.course-tabs').find('.active').clone().children().remove().end().text());
 
 </script>

@@ -110,3 +110,84 @@
         }
     }
 }
+
+// view - membership
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#membership {
+    .membership-section {
+        @include outer-container;
+    }
+    h3 {
+        font-size: 24px !important;
+    }
+    label {
+        font-family: $source-sans-pro;
+    }
+    textarea {
+        font-family: $source-sans-pro;
+        background: $ee-blue-lightest;
+        width: 100% !important;
+        border: 0px;
+        box-shadow: none;
+        color: $ee-blue;
+        padding: 10px;
+        &::-webkit-input-placeholder {
+            /* WebKit, Blink, Edge */
+            color: $ee-blue;
+        }
+        &:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 */
+            color: $ee-blue;
+            opacity: 1;
+        }
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ */
+            color: $ee-blue;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $ee-blue;
+        }
+        &:focus {
+            border-color: $ee-blue-lighter;
+            box-shadow: 0 0 6px 0 $ee-blue-lightest, inset 0 0 4px 0 $ee-blue-lightest;
+        }
+    }
+    .enrollment-button {
+        color: white;
+        display: inline-block;
+        padding: 0px ($baseline*2);
+        line-height: 2.8;
+        background: $ee-blue;
+        border: 0;
+        border-radius: 0;
+        transition: all 0.3s ease 0s;
+        box-shadow: none;
+        font-family: $source-sans-pro;
+        font-weight: lighter;
+        font-size: 14px;
+        &:hover,
+        &:active {
+            background: $ee-blue-lighter;
+            box-shadow: none;
+        }
+    }
+    .enroll-option {
+        @include span-columns(2);
+        &:nth-child(2) {
+            @include span-columns(3);
+        }
+        float: left;
+        .hint {
+            left: 120px;
+        }
+    }
+    .enroll-button-container {
+        @include span-columns(7);
+        @include omega();
+        float: right;
+        text-align: right;
+        margin-top: 10px;
+    }
+}
