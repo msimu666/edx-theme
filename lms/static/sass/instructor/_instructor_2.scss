@@ -123,14 +123,16 @@
     label {
         font-family: $source-sans-pro;
     }
-    textarea {
+    textarea,
+    input[type="text"] {
         font-family: $source-sans-pro;
         background: $ee-blue-lightest;
-        width: 100% !important;
         border: 0px;
         box-shadow: none;
         color: $ee-blue;
         padding: 10px;
+        height: 40px;
+        font-size: 14px;
         &::-webkit-input-placeholder {
             /* WebKit, Blink, Edge */
             color: $ee-blue;
@@ -154,6 +156,12 @@
             box-shadow: 0 0 6px 0 $ee-blue-lightest, inset 0 0 4px 0 $ee-blue-lightest;
         }
     }
+    input[type="text"] {
+        width: 80% !important;
+    }
+    textarea {
+        width: 100% !important;
+    }
     .enrollment-button {
         color: white;
         display: inline-block;
@@ -174,20 +182,56 @@
         }
     }
     .enroll-option {
-        @include span-columns(2);
-        &:nth-child(2) {
-            @include span-columns(3);
-        }
+        margin: 10px 15px 10px 0 !important;
         float: left;
         .hint {
-            left: 120px;
+            width: 200px !important;
+            left: 115px !important;
+            z-index: 1 !important;
         }
     }
     .enroll-button-container {
-        @include span-columns(7);
-        @include omega();
         float: right;
         text-align: right;
         margin-top: 10px;
+    }
+    .member-lists-management {
+        .wrapper-member-select {
+            background-color: $ee-blue-lightest !important;
+        }
+        .member-list-widget {
+            .bottom-bar {
+                padding: 0 !important;
+                border: none !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
+            .info {
+                padding: 0 !important;
+                border: none !important;
+                margin: 10px 0px !important;
+                font-size: 16px !important;
+            }
+            input[type="button"].add {
+                color: white !important;
+                display: inline-block !important;
+                padding: 0px 40px !important;
+                line-height: 2.8 !important;
+                background: $ee-blue !important;
+                border: 0 !important;
+                border-radius: 0 !important;
+                transition: all 0.3s ease 0s !important;
+                box-shadow: none !important;
+                font-family: $source-sans-pro !important;
+                font-weight: 400 !important;
+                font-size: 14px !important;
+                right: 0 !important;
+                &:hover,
+                &:active {
+                    background: $ee-blue-lighter !important;
+                    box-shadow: none !important;
+                }
+            }
+        }
     }
 }

@@ -11,18 +11,9 @@ from openedx.core.djangoapps.course_groups.partition_scheme import get_cohorted_
     <div class="header">
       <div class="title"> {{title}} </div>
     </div>
-    <div class="info"> {{info}} </div>
+    <p class="info"> {{info}} </p>
     <div class="member-list">
-      <table>
-        <thead>
-          <tr>
-            {{#labels}}
-              <td class="label">{{.}}</td>
-            {{/labels}}
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      
     </div>
     <div class="bottom-bar">
       <label for="add-field" class="sr">{{add_placeholder}}</label>
