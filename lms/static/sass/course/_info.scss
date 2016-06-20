@@ -149,6 +149,10 @@ div.info-wrapper {
                     border: none;
                     color: $ee-blue;
                     font-weight: normal;
+                    &:active,
+                    &:focus {
+                        box-shadow: none;
+                    }
                 }
                 .toggle-visibility-element {
                     content: '';
