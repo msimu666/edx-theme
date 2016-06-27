@@ -1,3 +1,64 @@
+.new-ee-link {
+    color: $ee-blue;
+}
+
+.new-ee-background {
+    background: $ee-blue-lightest;
+}
+
+.new-ee-button {
+    color: white !important;
+    display: inline-block !important;
+    padding: 0px 40px !important;
+    line-height: 2.8 !important;
+    background: $ee-blue !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease 0s !important;
+    box-shadow: none !important;
+    font-family: $source-sans-pro !important;
+    font-weight: 400 !important;
+    font-size: 14px !important;
+    right: 0 !important;
+    &:hover,
+    &:active {
+        background: $ee-blue-lighter !important;
+        box-shadow: none !important;
+    }
+}
+
+.new-ee-input {
+    font-family: $source-sans-pro;
+    background: $ee-blue-lightest;
+    border: 0px;
+    box-shadow: none;
+    color: $ee-blue;
+    padding: 10px;
+    font-size: 14px;
+    &::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: $ee-blue;
+    }
+    &:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: $ee-blue;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: $ee-blue;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $ee-blue;
+    }
+    &:focus {
+        border-color: $ee-blue-lighter;
+        box-shadow: 0 0 6px 0 $ee-blue-lightest, inset 0 0 4px 0 $ee-blue-lightest;
+    }
+}
+
 // instructor-left-nav
 .instructor-left-nav {
     .instructor-nav {
@@ -35,10 +96,8 @@
 // --------------------
 .instructor-dashboard-wrapper-2 {
     .wrapper-msg.urgency-low.is-shown {
-        background: $ee-blue-lightest;
-        a {
-            color: $ee-blue;
-        }
+        @extend .new-ee-background;
+        @extend .new-ee-link;
     }
 }
 
@@ -111,6 +170,45 @@
     }
 }
 
+// view - cohort management
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#cohort_management {
+    *:not(i):not(h1):not(h3):not(h4) {
+        font-family: $source-sans-pro !important;
+    }
+    a {
+        @extend .new-ee-link;
+    }
+    button {
+        @extend .new-ee-button;
+    }
+    input,
+    textarea {
+        @extend .new-ee-input;
+    }
+    h3 {
+        font-size: 24px !important;
+        margin: 20px 0;
+        font-weight: normal;
+    }
+    .cohort-management-nav {
+        .cohort-select {
+            padding: 5px;
+        }
+    }
+    .cohort-management-group {
+        .cohort-management-settings,
+        .cohort-management-group-header {
+            background: $ee-blue-lightest;
+        }
+    }
+    .wrapper-cohort-supplemental {
+        .cohort-management-supplemental {
+            @extend .new-ee-background;
+        }
+    }
+}
+
 // view - membership
 // --------------------
 .instructor-dashboard-wrapper-2 section.idash-section#membership {
@@ -125,36 +223,8 @@
     }
     textarea,
     input[type="text"] {
-        font-family: $source-sans-pro;
-        background: $ee-blue-lightest;
-        border: 0px;
-        box-shadow: none;
-        color: $ee-blue;
-        padding: 10px;
+        @extend .new-ee-input;
         height: 40px;
-        font-size: 14px;
-        &::-webkit-input-placeholder {
-            /* WebKit, Blink, Edge */
-            color: $ee-blue;
-        }
-        &:-moz-placeholder {
-            /* Mozilla Firefox 4 to 18 */
-            color: $ee-blue;
-            opacity: 1;
-        }
-        &::-moz-placeholder {
-            /* Mozilla Firefox 19+ */
-            color: $ee-blue;
-            opacity: 1;
-        }
-        &:-ms-input-placeholder {
-            /* Internet Explorer 10-11 */
-            color: $ee-blue;
-        }
-        &:focus {
-            border-color: $ee-blue-lighter;
-            box-shadow: 0 0 6px 0 $ee-blue-lightest, inset 0 0 4px 0 $ee-blue-lightest;
-        }
     }
     input[type="text"] {
         width: 80% !important;
@@ -163,23 +233,7 @@
         width: 100% !important;
     }
     .enrollment-button {
-        color: white;
-        display: inline-block;
-        padding: 0px ($baseline*2);
-        line-height: 2.8;
-        background: $ee-blue;
-        border: 0;
-        border-radius: 0;
-        transition: all 0.3s ease 0s;
-        box-shadow: none;
-        font-family: $source-sans-pro;
-        font-weight: lighter;
-        font-size: 14px;
-        &:hover,
-        &:active {
-            background: $ee-blue-lighter;
-            box-shadow: none;
-        }
+        @extend .new-ee-button;
     }
     .enroll-option {
         margin: 10px 15px 10px 0 !important;
@@ -213,24 +267,7 @@
                 font-size: 16px !important;
             }
             input[type="button"].add {
-                color: white !important;
-                display: inline-block !important;
-                padding: 0px 40px !important;
-                line-height: 2.8 !important;
-                background: $ee-blue !important;
-                border: 0 !important;
-                border-radius: 0 !important;
-                transition: all 0.3s ease 0s !important;
-                box-shadow: none !important;
-                font-family: $source-sans-pro !important;
-                font-weight: 400 !important;
-                font-size: 14px !important;
-                right: 0 !important;
-                &:hover,
-                &:active {
-                    background: $ee-blue-lighter !important;
-                    box-shadow: none !important;
-                }
+                @extend .new-ee-button;
             }
         }
     }
