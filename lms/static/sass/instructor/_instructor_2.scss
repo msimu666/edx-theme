@@ -97,7 +97,9 @@
 .instructor-dashboard-wrapper-2 {
     .wrapper-msg.urgency-low.is-shown {
         @extend .new-ee-background;
-        @extend .new-ee-link;
+        a {
+            @extend .new-ee-link;
+        }
     }
 }
 
