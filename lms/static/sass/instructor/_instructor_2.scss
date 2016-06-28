@@ -1,3 +1,4 @@
+// ee updated styling for links, buttons, inputs, background
 .new-ee-link {
     color: $ee-blue;
 }
@@ -59,6 +60,36 @@
     }
 }
 
+// general css rules for this page
+section.idash-section#student_admin,
+section.idash-section#course_info,
+section.idash-section#cohort_management,
+section.idash-section#membership,
+section.idash-section#data_download {
+    *:not(i):not(h1):not(h3):not(h4) {
+        font-family: $source-sans-pro !important;
+    }
+    h3 {
+        font-size: 24px !important;
+        margin: 20px 0;
+        font-weight: normal;
+    }
+    input[type="text"],
+    textarea {
+        @extend .new-ee-input;
+    }
+    input[type="button"] {
+        @extend .new-ee-button;
+        font-weight: lighter;
+    }
+    a {
+        @extend .new-ee-link;
+    }
+    button {
+        @extend .new-ee-button;
+    }
+}
+
 // instructor-left-nav
 .instructor-left-nav {
     .instructor-nav {
@@ -92,6 +123,20 @@
     }
 }
 
+// view - student admin
+// --------------------
+.instructor-dashboard-wrapper-2 section.idash-section#student_admin {
+    .gradebook-link {
+        @extend .new-ee-button;
+    }
+    .student-specific-container,
+    .student-grade-container {
+        input[type="text"] {
+            margin-top: -5px;
+        }
+    }
+}
+
 // view - course info
 // --------------------
 .instructor-dashboard-wrapper-2 {
@@ -107,9 +152,6 @@
     @include outer-container;
     .basic-wrapper {
         @include span-columns(6);
-        h3 {
-            font-size: 24px !important;
-        }
         .list-input {
             list-style: none;
             padding-left: 0;
@@ -137,12 +179,6 @@
         @include span-columns(6);
         @include pad(0 0 0 ($baseline*2));
         box-sizing: border-box;
-        h3 {
-            font-size: 24px !important;
-        }
-        *:not(h3) {
-            font-family: $source-sans-pro !important;
-        }
         .enrollment-wrapper {
             @include fill-parent();
             table tbody {
@@ -175,23 +211,8 @@
 // view - cohort management
 // --------------------
 .instructor-dashboard-wrapper-2 section.idash-section#cohort_management {
-    *:not(i):not(h1):not(h3):not(h4) {
-        font-family: $source-sans-pro !important;
-    }
     a {
         @extend .new-ee-link;
-    }
-    button {
-        @extend .new-ee-button;
-    }
-    input,
-    textarea {
-        @extend .new-ee-input;
-    }
-    h3 {
-        font-size: 24px !important;
-        margin: 20px 0;
-        font-weight: normal;
     }
     .cohort-management-nav {
         .cohort-select {
@@ -225,7 +246,6 @@
     }
     textarea,
     input[type="text"] {
-        @extend .new-ee-input;
         height: 40px;
     }
     input[type="text"] {
@@ -268,9 +288,10 @@
                 margin: 10px 0px !important;
                 font-size: 16px !important;
             }
-            input[type="button"].add {
-                @extend .new-ee-button;
-            }
         }
+    }
+    input[type="text"].add {
+        font-weight: 600 !important;
+        text-shadow: none;
     }
 }
