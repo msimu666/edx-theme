@@ -1,7 +1,7 @@
 <%page args="section_data" expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
 
-<div>
+<div class="student-gradebook">
   %if section_data['is_small_course']:
   ## Show the gradebook for small courses
     <h3>${_("Student Gradebook")}</h3>
@@ -18,38 +18,37 @@
 <div class="student-specific-container action-type-container">
   <h3>${_("Student-specific grade inspection")}</h3>
   <div class="request-response-error"></div>
-  <br />
   <label>
-  ${_("Specify the {platform_name} email address or username of a student here:").format(platform_name=settings.PLATFORM_NAME)}
-  <input type="text" name="student-select-progress" placeholder="${_("Student Email or Username")}" >
+  ${_("Specify an {platform_name} email address or username:").format(platform_name=settings.PLATFORM_NAME)}
   </label>
-  <br>
+  <div class="student-specific-input-button">
+    <input type="text" name="student-select-progress" placeholder="${_("Student Email or Username")}" >
 
-  <div class="progress-link-wrapper">
-  <p>
-    ${_("Click this link to view the student's progress page:")}
-
-    <a href="" class="progress-link" data-endpoint="${ section_data['get_student_progress_url_url'] }"> ${_("Student Progress Page")} </a>
-  </p>
+    <div class="progress-link-wrapper">
+    <p>
+      <a href="" class="progress-link" data-endpoint="${ section_data['get_student_progress_url_url'] }"> ${_("View Student's Progress Page")} </a>
+    </p>
+    </div>
   </div>
-
 </div>
 
 <div class="student-grade-container action-type-container">
   <h3>${_("Student-specific grade adjustment")}</h3>
   <div class="request-response-error"></div>
-  <p>
-  <label>
-  ${_("Specify the {platform_name} email address or username of a student here:").format(platform_name=settings.PLATFORM_NAME)}
-  <input type="text" name="student-select-grade" placeholder="${_("Student Email or Username")}">
-  </label>
-  </p>
-  <br>
+  <div class="student-specific-grade-adjustment">
+    <div class="student-specific-grade-adjustment-left">
+      <label>
+      ${_("Specify an {platform_name} email address or username:").format(platform_name=settings.PLATFORM_NAME)}
+      </label>
+      <input type="text" name="student-select-grade" placeholder="${_("Student Email or Username")}">
+    </div>
 
-  <label> ${_("Specify a problem in the course here with its complete location:")}
-  <input type="text" name="problem-select-single" placeholder="${_("Problem location")}">
-  </label>
-
+    <div class="student-specific-grade-adjustment-right">
+      <label> ${_("Specify a problem in the course here with its complete location:")}
+      </label>
+      <input type="text" name="problem-select-single" placeholder="${_("Problem location")}">
+    </div>
+  </div>
   ## Translators: A location (string of text) follows this sentence.
   <p>${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}<br/>
   <code>block-v1:edX+DemoX+2015+type@problem+block@618c5933b8b544e4a4cc103d3e508378</code></p>

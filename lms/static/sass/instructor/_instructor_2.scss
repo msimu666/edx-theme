@@ -11,7 +11,7 @@
     color: white !important;
     display: inline-block !important;
     padding: 0px 40px !important;
-    line-height: 2.8 !important;
+    line-height: 2.6 !important;
     background: $ee-blue !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -36,6 +36,7 @@
     color: $ee-blue;
     padding: 10px;
     font-size: 14px;
+    height: 40px;
     &::-webkit-input-placeholder {
         /* WebKit, Blink, Edge */
         color: $ee-blue;
@@ -66,12 +67,13 @@ section.idash-section#course_info,
 section.idash-section#cohort_management,
 section.idash-section#membership,
 section.idash-section#data_download {
-    *:not(i):not(h1):not(h3):not(h4) {
+    *:not(i):not(h1):not(h3):not(h4):not(code) {
         font-family: $source-sans-pro !important;
     }
     h3 {
+        text-transform: capitalize;
         font-size: 24px !important;
-        margin: 20px 0;
+        margin: 20px 0 10px;
         font-weight: normal;
     }
     input[type="text"],
@@ -80,7 +82,6 @@ section.idash-section#data_download {
     }
     input[type="button"] {
         @extend .new-ee-button;
-        font-weight: lighter;
     }
     a {
         @extend .new-ee-link;
@@ -126,13 +127,55 @@ section.idash-section#data_download {
 // view - student admin
 // --------------------
 .instructor-dashboard-wrapper-2 section.idash-section#student_admin {
+    *:not(i):not(h1):not(h3):not(h4):not(code) {
+        font-size: 14px;
+    }
     .gradebook-link {
         @extend .new-ee-button;
+        font-weight: 600 !important;
     }
-    .student-specific-container,
-    .student-grade-container {
-        input[type="text"] {
-            margin-top: -5px;
+    .student-gradebook {
+        margin-bottom: $baseline*2;
+    }
+    .student-specific-container {
+        .student-specific-input-button {
+            @include clearfix;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: ($baseline/2);
+            input {
+                float: left;
+                display: block;
+                margin-right: 2%;
+                width: 64%;
+            }
+            .progress-link-wrapper {
+                float: left;
+                display: block;
+                width: 34%;
+            }
+        }
+    }
+    .progress-link {
+        @extend .new-ee-button;
+        font-weight: 600 !important;
+    }
+    .request-response-error {
+        padding-bottom: 0;
+    }
+    .student-specific-grade-adjustment {
+        @include outer-container;
+        margin-bottom: $baseline;
+        .student-specific-grade-adjustment-left,
+        .student-specific-grade-adjustment-right {
+            @include span-columns (6);
+            label {
+                @include fill-parent();
+            }
+            input {
+                @include fill-parent();
+            }
         }
     }
 }
@@ -238,12 +281,6 @@ section.idash-section#data_download {
     .membership-section {
         @include outer-container;
     }
-    h3 {
-        font-size: 24px !important;
-    }
-    label {
-        font-family: $source-sans-pro;
-    }
     textarea,
     input[type="text"] {
         height: 40px;
@@ -256,6 +293,7 @@ section.idash-section#data_download {
     }
     .enrollment-button {
         @extend .new-ee-button;
+        font-weight: 600 !important;
     }
     .enroll-option {
         margin: 10px 15px 10px 0 !important;
