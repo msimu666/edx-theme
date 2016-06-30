@@ -68,7 +68,8 @@
   <p>
   %if section_data['access']['instructor']:
     <label> ${_('You may also delete the entire state of a student for the specified problem:')}
-    <input type="button" class="molly-guard" name="delete-state-single" value="${_("Delete Student State for Problem")}" data-endpoint="${ section_data['reset_student_attempts_url'] }"></label>
+    </label>
+    <p><input type="button" class="molly-guard" name="delete-state-single" value="${_("Delete Student State for Problem")}" data-endpoint="${ section_data['reset_student_attempts_url'] }"></p>
   %endif
   </p>
 
@@ -132,13 +133,17 @@
 
     <label>
       ${_("Specify a problem in the course here with its complete location:")}
-      <input type="text" name="problem-select-all" size="60" placeholder="${_("Problem location")}" aria-describedby="problem-select-all-help">
     </label>
+    <p>      
+      <input type="text" name="problem-select-all" size="60" placeholder="${_("Problem location")}" aria-describedby="problem-select-all-help">
+    </p>
     ## Translators: A location (string of text) follows this sentence.
     <p id="problem-select-all-help">${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}<br/>
     <code>block-v1:edX+DemoX+2015+type@problem+block@618c5933b8b544e4a4cc103d3e508378</code></p>
     <p>
       ${_("Then select an action")}:
+    </p>
+    <p>
       <input type="button" class="molly-guard" name="reset-attempts-all" value="${_("Reset ALL students' attempts")}" data-endpoint="${ section_data['reset_student_attempts_url'] }">
       <input type="button" class="molly-guard" name="rescore-problem-all" value="${_("Rescore ALL students' problem submissions")}" data-endpoint="${ section_data['rescore_problem_url'] }">
     </p>
