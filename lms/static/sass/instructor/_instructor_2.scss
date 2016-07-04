@@ -242,7 +242,7 @@ section.idash-section#data_download {
             @include fill-parent();
             table tbody {
                 td {
-                    padding-bottom: $baseline/4;
+                    padding-bottom: $baseline*0.75;
                 }
                 td:first-child {
                     width: 100px;
