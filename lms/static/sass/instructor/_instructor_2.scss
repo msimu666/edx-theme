@@ -296,6 +296,16 @@ section.idash-section#data_download {
 .instructor-dashboard-wrapper-2 section.idash-section#membership {
     .membership-section {
         @include outer-container;
+        .request-res-section {
+            margin-top: 4.5em !important;
+            h3 {
+                color: black !important;
+                font-family: $source-sans-pro !important;
+                font-style: normal !important;
+                font-size: 14px !important;
+                font-weight: 600;
+            }
+        }
     }
     textarea,
     input[type="text"] {
