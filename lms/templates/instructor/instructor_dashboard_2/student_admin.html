@@ -8,7 +8,6 @@
       <p>
 	${_("Click here to view the gradebook for enrolled students. This feature is only visible to courses with a small number of total enrolled students.")}
       </p>
-      <br>
       <p>
 	<a href="${ section_data['spoc_gradebook_url'] }" class="gradebook-link"> ${_("View Gradebook")} </a>
       </p>
@@ -50,7 +49,7 @@
     </div>
   </div>
   ## Translators: A location (string of text) follows this sentence.
-  <p>${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}<br/>
+  <p>${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}
   <code>block-v1:edX+DemoX+2015+type@problem+block@618c5933b8b544e4a4cc103d3e508378</code></p>
 
   <p>
@@ -65,13 +64,15 @@
   %endif
   </p>
 
-  <p>
+  
   %if section_data['access']['instructor']:
+  <p>
     <label> ${_('You may also delete the entire state of a student for the specified problem:')}
     </label>
     <p><input type="button" class="molly-guard" name="delete-state-single" value="${_("Delete Student State for Problem")}" data-endpoint="${ section_data['reset_student_attempts_url'] }"></p>
-  %endif
   </p>
+  %endif
+  
 
 
   %if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS') and section_data['access']['instructor']:
@@ -93,7 +94,6 @@
   ${_("Student's {platform_name} email address or username:").format(platform_name=settings.PLATFORM_NAME)}
   <input type="text" name="entrance-exam-student-select-grade" placeholder="${_('Student Email or Username')}">
   </label>
-  <br>
 
   <p>
   ${_("Select an action for the student's entrance exam. This action will affect every problem in the student's exam.")}
@@ -138,7 +138,7 @@
       <input type="text" name="problem-select-all" size="60" placeholder="${_("Problem location")}" aria-describedby="problem-select-all-help">
     </p>
     ## Translators: A location (string of text) follows this sentence.
-    <p id="problem-select-all-help">${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}<br/>
+    <p id="problem-select-all-help">${_("You must provide the complete location of the problem. In the Staff Debug viewer, the location looks like this:")}
     <code>block-v1:edX+DemoX+2015+type@problem+block@618c5933b8b544e4a4cc103d3e508378</code></p>
     <p>
       ${_("Then select an action")}:
@@ -163,7 +163,6 @@
     <h3> ${_("Pending Tasks")} </h3>
     <div class="running-tasks-section">
       <p>${_("The status for any active tasks appears in a table below.")} </p>
-      <br />
 
       <div class="running-tasks-table" data-endpoint="${ section_data['list_instructor_tasks_url'] }"></div>
     </div>

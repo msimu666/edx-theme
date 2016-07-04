@@ -137,6 +137,9 @@ section.idash-section#data_download {
     }
     .student-gradebook {
         margin-bottom: $baseline*2;
+        p+p {
+            margin-top: 5px;
+        }
     }
     .student-specific-container {
         .student-specific-input-button {
@@ -165,18 +168,28 @@ section.idash-section#data_download {
     .request-response-error {
         padding-bottom: 0;
     }
-    .student-specific-grade-adjustment {
-        @include outer-container;
-        margin-bottom: $baseline;
-        .student-specific-grade-adjustment-left,
-        .student-specific-grade-adjustment-right {
-            @include span-columns (6);
-            label {
-                @include fill-parent();
+    .student-grade-container {
+        input[type="button"] {
+            margin-top: -15px;
+        }
+        .student-specific-grade-adjustment {
+            @include outer-container;
+            margin-bottom: $baseline;
+            .student-specific-grade-adjustment-left,
+            .student-specific-grade-adjustment-right {
+                @include span-columns (6);
+                label {
+                    @include fill-parent();
+                }
+                input {
+                    @include fill-parent();
+                }
             }
-            input {
-                @include fill-parent();
-            }
+        }
+    }
+    .course-specific-container {
+        input[type="button"] {
+            margin-top: -15px;
         }
     }
 }
@@ -185,7 +198,9 @@ section.idash-section#data_download {
 // --------------------
 .instructor-dashboard-wrapper-2 {
     .wrapper-msg.urgency-low.is-shown {
-        @extend .new-ee-background;
+        background: none;
+        box-shadow: none;
+        padding: ($baseline/2) 0;
         a {
             @extend .new-ee-link;
         }
