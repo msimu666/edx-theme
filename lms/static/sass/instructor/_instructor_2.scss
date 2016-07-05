@@ -215,21 +215,12 @@ section.idash-section#data_download {
             list-style: none;
             padding-left: 0;
             li {
-                @include outer-container;
                 padding: ($baseline/4) 0;
-                label,
                 b {
                     font-family: $source-sans-pro !important;
-                    font-weight: normal;
-                }
-                b {
-                    @include span-columns(7);
-                    background: $ee-blue-lightest;
+                    font-weight: bold;
                     padding: $baseline/4;
                     box-sizing: border-box;
-                }
-                label {
-                    @include span-columns(5);
                 }
             }
         }
