@@ -297,13 +297,20 @@ section.idash-section#data_download {
     .membership-section {
         @include outer-container;
         .request-res-section {
+            position: relative;
             margin-top: 4.5em !important;
-            h3 {
+            padding-left: 30px;
+            span {
                 color: black !important;
                 font-family: $source-sans-pro !important;
                 font-style: normal !important;
                 font-size: 14px !important;
                 font-weight: 600;
+            }
+            .fa {
+                position: absolute;
+                left: 0;
+                color: #df4050;
             }
         }
     }
