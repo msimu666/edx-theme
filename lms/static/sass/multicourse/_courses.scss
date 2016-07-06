@@ -396,6 +396,7 @@ $facet-background-color: $ee-green;
       @include clearfix();
       border-top: none;
       border-bottom: none;
+
     }
 
     ul {
@@ -484,7 +485,7 @@ $facet-background-color: $ee-green;
       @extend %t-strong;
       margin: 0;
       padding: 0;
-      color: $facet-text-color;
+      color: black;
       text-transform: none;
     }
 
@@ -522,8 +523,8 @@ $facet-background-color: $ee-green;
       border-radius: 0px;
       padding: 3px 0;
       width: 100%;
-      color: $facet-text-color;
-      font-size: 10px;
+      color: black;
+      font-size: 12px;
 
       .count {
         @include right($baseline*0.6);
