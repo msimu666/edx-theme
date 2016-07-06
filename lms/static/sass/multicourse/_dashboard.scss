@@ -421,8 +421,9 @@ body.view-dashboard {
                     padding: 0;
                     @include float(left);
                     font-size: 12px;
-                    font-weight: 600;
-                    padding-bottom: 6px;
+                    font-weight: bold;
+                    padding-bottom: 2px;
+                    font-family: $source-sans-pro;
                 }
                 .info-date-block {
                     clear: left;
