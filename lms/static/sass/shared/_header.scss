@@ -99,6 +99,7 @@ header.global {
     }
     .user {
         @include float(right);
+        display: table-row;
         @extend %ui-print-excluded;
         padding-left: 0;
         margin: 0;
@@ -109,9 +110,10 @@ header.global {
             }
         }
         > .primary {
-            display: block;
-            @include float(left);
+            display: table-cell;
+            vertical-align: middle;
             margin: 0;
+            float: none;
             position: relative;
             > a {
                 margin: 0;
@@ -164,11 +166,11 @@ header.global {
         .dropdown-menu {
             background: $white;
             border-radius: 4px;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid $gray-l3;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+            border: none;
             display: none;
             margin-top: 0;
-            padding: 5px 10px;
+            padding: 11px 0;
             position: absolute;
             @include right(0px);
             top: 37px;
@@ -185,8 +187,8 @@ header.global {
                     bottom: 6px solid transparent;
                     left: 6px solid transparent;
                 }
-                box-shadow: 1px 0 0 0 $gray-l3,
-                0 -1px 0 0 $gray-l3;
+                box-shadow: 1px 0 0 0 rgba(200, 200, 200, 0.3),
+                0 -1px 0 0 rgba(200, 200, 200, 0.3);
                 content: "";
                 display: block;
                 height: 0px;
@@ -197,8 +199,9 @@ header.global {
                 width: 0px;
             }
             li {
+                font-family: $source-sans-pro;
                 display: block;
-                border-top: 1px dotted $border-color-2;
+                border-top: none;
                 box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
                 &:first-child {
                     border: none;
@@ -206,21 +209,20 @@ header.global {
                 }
                 > a {
                     border: 1px solid transparent;
-                    border-radius: 3px;
+                    border-radius: 0;
                     @include box-sizing(border-box);
-                    color: $link-color;
+                    color: black;
                     cursor: pointer;
                     display: block;
-                    margin: 5px 0px;
                     overflow: hidden;
-                    padding: 3px 5px 4px;
+                    padding: 2px 10px;
                     text-overflow: ellipsis;
                     @include transition(padding 0.15s linear 0s);
                     white-space: nowrap;
                     width: 100%;
-                    &:hover,
-                    &:focus {
-                        color: $base-font-color;
+                    &:hover {
+                        color: white;
+                        background: $footer-bg;
                         text-decoration: none;
                     }
                 }
@@ -409,11 +411,13 @@ header.global-new {
     .user {
         @include float(right);
         margin-top: 0;
+        display: table-row;
         > .primary {
-            display: block;
-            @include float(left);
+            display: table-cell;
+            float: none;
             margin: 0;
             position: relative;
+            vertical-align: middle;
             > a {
                 margin: 0;
                 @include border-right-radius(0);
@@ -466,17 +470,17 @@ header.global-new {
             text-shadow: none;
         }
         .dropdown-menu {
-            background: $border-color-4;
+            background: $white;
             border-radius: 4px;
-            box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.3);
-            border: 1px solid $border-color-3;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+            border: none;
             display: none;
             margin-top: 0;
-            padding: 5px 10px;
+            padding: 11px 0;
             position: absolute;
-            @include right(0);
-            top: 34px;
-            width: 170px;
+            @include right(0px);
+            top: 37px;
+            min-width: 120px;
             z-index: 3;
             &.expanded {
                 display: block;
@@ -489,20 +493,21 @@ header.global-new {
                     bottom: 6px solid transparent;
                     left: 6px solid transparent;
                 }
-                box-shadow: 1px 0 0 0 $border-color-3,
-                0 -1px 0 0 $border-color-3;
+                box-shadow: 1px 0 0 0 rgba(200, 200, 200, 0.3),
+                0 -1px 0 0 rgba(200, 200, 200, 0.3);
                 content: "";
                 display: block;
                 height: 0px;
                 position: absolute;
                 @include transform(rotate(-45deg));
                 @include right(7px);
-                top: -6px;
+                top: -5px;
                 width: 0px;
             }
             li {
+                font-family: $source-sans-pro;
                 display: block;
-                border-top: 1px solid $gray-l3;
+                border-top: none;
                 box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
                 &:first-child {
                     border: none;
@@ -510,21 +515,20 @@ header.global-new {
                 }
                 > a {
                     border: 1px solid transparent;
-                    border-radius: 3px;
+                    border-radius: 0;
                     @include box-sizing(border-box);
-                    color: $link-color;
+                    color: black;
                     cursor: pointer;
                     display: block;
-                    margin: 5px 0px;
                     overflow: hidden;
-                    padding: 3px 5px 4px;
+                    padding: 2px 10px;
                     text-overflow: ellipsis;
                     @include transition(padding 0.15s linear 0s);
                     white-space: nowrap;
                     width: 100%;
-                    &:hover,
-                    &:focus {
-                        color: $base-font-color;
+                    &:hover {
+                        color: white;
+                        background: $footer-bg;
                         text-decoration: none;
                     }
                 }
