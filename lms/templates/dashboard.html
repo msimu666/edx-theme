@@ -241,15 +241,14 @@ from openedx.core.djangolib.markup import Text, HTML
     </button>
 
     <header>
-      <h2 id="unenrollment-modal-title">
+      <h4 id="unenrollment-modal-title">
         <span id='track-info'></span>
         <span id='refund-info'></span>
         <span class="sr">,
           ## Translators: this text gives status on if the modal interface (a menu or piece of UI that takes the full focus of the screen) is open or not
           ${_("window open")}
         </span>
-      </h2>
-      <hr/>
+      </h4>
     </header>
     <div id="unenroll_error" class="modal-form-error"></div>
     <form id="unenroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
