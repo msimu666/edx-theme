@@ -18,7 +18,7 @@
 
 // +Variables - Search
 // ====================
-$facet-text-color: #3d3e3f;
+$facet-text-color: $black;
 $facet-background-color: $ee-green;
 
 
@@ -67,11 +67,13 @@ $facet-background-color: $ee-green;
         }
         .course-info {
           @include span-columns(6);
+          font-family: $source-sans-pro;
           .course-organization, .course-code {
-            padding-bottom: $baseline/2;
+            padding-bottom: $baseline/10;
+            font-weight: bold;
           }
           .course-organization, .course-code, .course-date {
-            font-size: 10px;
+            font-size: 12px;
           }
         }
         .course-overview-button {
@@ -415,6 +417,7 @@ $facet-background-color: $ee-green;
 
       .facet-option {
         @extend %t-strong;
+        font-family: $source-sans-pro;
         font-size: 10px;
         color: $white;
         text-decoration: none;
@@ -485,7 +488,7 @@ $facet-background-color: $ee-green;
       @extend %t-strong;
       margin: 0;
       padding: 0;
-      color: black;
+      color: $facet-text-color;
       text-transform: none;
     }
 
@@ -523,7 +526,8 @@ $facet-background-color: $ee-green;
       border-radius: 0px;
       padding: 3px 0;
       width: 100%;
-      color: black;
+      color: $facet-text-color;
+      font-family: $source-sans-pro;
       font-size: 12px;
 
       .count {
