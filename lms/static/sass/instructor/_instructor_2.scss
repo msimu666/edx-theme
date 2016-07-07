@@ -361,7 +361,7 @@ section.idash-section#data_download {
 section.idash-section#data_download {
     p+p {
         margin-top: 5px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
     .data-download-container,
     .reports-download-container,
@@ -371,10 +371,16 @@ section.idash-section#data_download {
     .reports-download-container {
         .p-has-input {
             input[type="button"] {
-                margin-top: -10px;
+                margin-top: -15px;
             }
             input[type="text"] {
                 margin: -6px 5px 3px;
+            }
+        }
+        .problem-location {
+            margin-bottom: 10px;
+            label {
+                font-family: $source-sans-pro;
             }
         }
     }
