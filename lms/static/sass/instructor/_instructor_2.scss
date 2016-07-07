@@ -357,3 +357,25 @@ section.idash-section#data_download {
         text-shadow: none;
     }
 }
+
+section.idash-section#data_download {
+    p+p {
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    .data-download-container,
+    .reports-download-container,
+    .running-tasks-container {
+        margin-bottom: $baseline*2;
+    }
+    .reports-download-container {
+        .p-has-input {
+            input[type="button"] {
+                margin-top: -10px;
+            }
+            input[type="text"] {
+                margin: -6px 5px 3px;
+            }
+        }
+    }
+}

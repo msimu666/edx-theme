@@ -4,7 +4,7 @@
 
 <div class="data-download-container action-type-container">
   <div class="request-response-error msg msg-error copy" id="data-request-response-error"></div>
-  
+  <h3>Data Download</h3>
   <p>${_("Click to display the grading configuration for the course. The grading configuration is the breakdown of graded subsections of the course (such as exams and problem sets), and can be changed on the 'Grading' page (under 'Settings') in Studio.")}</p>
   <p><input type="button" name="dump-gradeconf" value="${_("Grading Configuration")}" data-endpoint="${ section_data['get_grading_config_url'] }"></p>
 
@@ -17,7 +17,7 @@
 %if settings.FEATURES.get('ENABLE_S3_GRADE_DOWNLOADS'):
   <div class="reports-download-container action-type-container">
     
-    <h2> ${_("Reports")}</h2>
+    <h3> ${_("Reports")}</h3>
 
     <p>${_("For large courses, generating some reports can take several hours. When report generation is complete, a link that includes the date and time of generation appears in the table below. These reports are generated in the background, meaning it is OK to navigate away from this page while your report is generating.")}</p>
 
@@ -25,31 +25,31 @@
 
     <p>${_("Click to generate a CSV file of all students enrolled in this course, along with profile information such as email address and username:")}</p>
 
-    <p><input type="button" name="list-profiles-csv" value="${_("Download profile information as a CSV")}" data-endpoint="${ section_data['get_students_features_url'] }" data-csv="true"></p>
+    <p class="p-has-input"><input type="button" name="list-profiles-csv" value="${_("Download profile information as a CSV")}" data-endpoint="${ section_data['get_students_features_url'] }" data-csv="true"></p>
 
     <p>${_("Click to generate a CSV file that lists learners who can enroll in the course but have not yet done so.")}</p>
 
-    <p><input type="button" name="list-may-enroll-csv" value="${_("Download a CSV of learners who can enroll")}" data-endpoint="${ section_data['get_students_who_may_enroll_url'] }" data-csv="true"></p>
+    <p class="p-has-input"><input type="button" name="list-may-enroll-csv" value="${_("Download a CSV of learners who can enroll")}" data-endpoint="${ section_data['get_students_who_may_enroll_url'] }" data-csv="true"></p>
 
     %if section_data['show_generate_proctored_exam_report_button']:
       <p>${_("Click to generate a CSV file of all proctored exam results in this course.")}</p>
-      <p><input type="button" name="proctored-exam-results-report" value="${_("Generate Proctored Exam Results Report")}" data-endpoint="${ section_data['list_proctored_results_url'] }"/></p>
+      <p class="p-has-input"><input type="button" name="proctored-exam-results-report" value="${_("Generate Proctored Exam Results Report")}" data-endpoint="${ section_data['list_proctored_results_url'] }"/></p>
     %endif
 
     %if section_data['course_has_survey']:
       <p>${_("Click to generate a CSV file of survey results for this course.")}</p>
-      <p><input type="button" name="survey-results-report" value="${_("Generate Survey Results Report")}" data-endpoint="${ section_data['course_survey_results_url'] }"/></p>
+      <p class="p-has-input"><input type="button" name="survey-results-report" value="${_("Generate Survey Results Report")}" data-endpoint="${ section_data['course_survey_results_url'] }"/></p>
     %endif
 
     <p>${_("To generate a CSV file that lists all student answers to a given problem, enter the location of the problem (from its Staff Debug Info).")}</p>
 
-    <p>
+    <p class="p-has-input">
       <label>
         <span>${_("Problem location: ")}</span>
         <input type="text" name="problem-location" />
       </label>
     </p>
-    <p>
+    <p class="p-has-input">
       <input type="button" name="list-problem-responses-csv" value="${_("Download a CSV of problem responses")}" data-endpoint="${ section_data['get_problem_responses_url'] }" data-csv="true">
     </p>
 
@@ -103,7 +103,7 @@
 %if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS'):
   <div class="running-tasks-container action-type-container">
     
-    <h2> ${_("Pending Tasks")} </h2>
+    <h3> ${_("Pending Tasks")} </h3>
     <div class="running-tasks-section">
       <p>${_("The status for any active tasks appears in a table below.")} </p>
       <div class="running-tasks-table" data-endpoint="${ section_data['list_instructor_tasks_url'] }"></div>
