@@ -1,0 +1,31 @@
+// discussion - mixins and extends
+// ====================
+
+@mixin forum-post-label-following($color, $bg-color) {
+  @extend %t-weight4;
+  @include font-size(9);
+  display: inline;
+  margin-top: ($baseline/4);
+  border: none;
+  border-radius: 1px;
+  padding: 1px 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: $source-sans-pro;
+  font-size: 10px;
+
+  background: $bg-color;
+  color: $color;
+
+  .icon {
+    display: none;
+  }
+
+  &:last-child {
+    @include margin-right(0);
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}

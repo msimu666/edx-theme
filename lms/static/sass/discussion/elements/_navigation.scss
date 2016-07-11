@@ -28,7 +28,7 @@
     @include fill-parent();
     display: block;
     vertical-align: middle;
-    padding: $baseline ($baseline/2) ($baseline/2) $baseline;
+    padding: $baseline 28px;
     border: 0;
     border-radius: 0;
     background: transparent;
@@ -54,14 +54,16 @@
 }
 
 .forum-nav-browse-current {
-  @include font-size(12);
   font-family: $source-sans-pro;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .forum-nav-browse-drop-arrow {
   @include margin-left($baseline/4);
+  position: absolute;
+  right: 33px;
+  top: 25px;
 }
 
 .forum-nav-search {
@@ -70,28 +72,44 @@
   display: block;
   position: relative;
   vertical-align: middle;
-  padding: ($baseline/4) ($baseline);
+  padding: ($baseline) ($baseline*1.5) ($baseline) 28px;
 }
 
 .forum-nav-search .icon {
-  @include font-size(12);
+  font-size: 16px;
   position: absolute;
   margin-top: -6px;
   top: 12px;
-  right: 0;
-  color: $ee-blue;
+  right: 2px;
+  color: $ee-blue-lighter;
 
 }
 
 .forum-nav-search-input {
   width: 100%;
   border: 0 !important;
-  border-bottom: 2px solid $ee-blue !important;
+  border-bottom: 2px solid $ee-blue-lighter !important;
   border-radius: none !important;
   padding: ($baseline/2);
+  padding-left: 0 !important;
   font-size: 16px !important;
   font-family: $source-sans-pro !important;
+  font-weight: 600;
   border-radius: 0 !important;
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $ee-blue-lighter;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color: $ee-blue-lighter;
+     opacity: 1;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+     color: $ee-blue-lighter;
+     opacity: 1;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color: $ee-blue-lighter;
+  }
 }
 
 // -----------
@@ -172,8 +190,9 @@
   @include clearfix();
   @include font-size(11);
   border-bottom: none;
-  background-color: $white;
-  padding: ($baseline/4) ($baseline) ($baseline/2);
+  background-color: $ee-blue-lightest;
+  padding: ($baseline/4) 25px ($baseline/4) 19px;
+  box-shadow: inset 0 7px 9px -7px rgba(0,0,0,0.5);
   color: $black;
   text-align: right;
 }
@@ -244,18 +263,20 @@
 .forum-nav-thread-link {
   display: block;
   position: relative;
-  padding: ($baseline/4) ($baseline);
+  padding: ($baseline/4) ($baseline) ($baseline/4) ($baseline*1.5);
 
   &.is-active {
     background-color: $ee-blue !important;
-   
+    .fa {
+      color: white;
+    }
 
     .forum-nav-thread-title {
       color: $white;
     }
 
     .forum-nav-thread-comments-count {
-      background-color: $gray-l4;
+      background-color: transparent;
       color: white;
 
       &:after {
@@ -285,7 +306,6 @@
 
 .forum-nav-thread-wrapper-0 {
   @extend %forum-nav-thread-wrapper;
-  display: none;
   width: 7%;
 
   .icon {
@@ -300,7 +320,7 @@
   }
 
   .fa-comments {
-    color: $gray-l2;
+    color: $ee-blue;
   }
 
   .fa-check-square-o {
@@ -308,13 +328,13 @@
   }
 
   .fa-question {
-    color: $pink;
+    color: $ee-blue;
   }
 }
 
 .forum-nav-thread-wrapper-1 {
   @extend %forum-nav-thread-wrapper;
-  width: 90%;
+  width: 83%;
 }
 
 .forum-nav-thread-wrapper-2 {
@@ -365,7 +385,8 @@
 
 .forum-nav-thread-comments-count {
   @extend %forum-nav-thread-wrapper-2-content;
-  @extend %t-weight4;
+  font-size: 14px;
+  font-weight: normal;
   position: relative;
   margin: 0; // Because tail is position: absolute
   border-radius: 0;

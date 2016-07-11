@@ -30,7 +30,11 @@
 
 @import 'discussion/discussion';
 
+@import 'discussion/mixins';
+
 @import 'discussion/elements/navigation';
+
+@import 'discussion/elements/labels';
 
 @import 'discussion/views/thread';
 

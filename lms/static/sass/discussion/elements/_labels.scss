@@ -7,7 +7,7 @@ body.discussion, .discussion-module {
   }
 
   .post-label-following {
-    @include forum-post-label($forum-color-following);
+    @include forum-post-label-following($ee-blue, $ee-blue-lightest);
   }
 
   .post-label-reported {
