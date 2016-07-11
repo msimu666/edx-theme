@@ -318,9 +318,12 @@
       }
     }
   }
+  .fa {
+    font-size: 16px !important;
+  }
 
   .fa-comments {
-    color: $ee-blue;
+    color: $gray-l2;
   }
 
   .fa-check-square-o {
@@ -328,7 +331,10 @@
   }
 
   .fa-question {
-    color: $ee-blue;
+    color: $pink;
+    &:before {
+      content: "\f059";
+    }
   }
 }
 
