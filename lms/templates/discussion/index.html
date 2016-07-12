@@ -59,7 +59,13 @@ from django.core.urlresolvers import reverse
 
 <script type="text/javascript">
   $('.current-active-part').text($('.course-tabs').find('.active').clone().children().remove().end().text());
-  $('.new-post-btn').appendTo('.course-info-top-navbar');
+  var newPostBtn = $('.new-post-btn');
+  newPostBtn.css('display', 'none');
+  setTimeout(function() { 
+    newPostBtn.css('display', 'inline-block');
+    newPostBtn.appendTo('.forum-nav-thread-list');
+  }, 100);
+  
 </script>
 
 <%include file="_underscore_templates.html" />
