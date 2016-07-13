@@ -216,6 +216,11 @@
     background-image: none;
     color: $link-color;
     text-align: left;
+    &:active {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
     &:hover,
     &:focus {
         // switched from a to button;
@@ -421,7 +426,8 @@
 }
 
 .forum-nav-thread-title {
-    @extend %t-title7;
+    font-size: 14px;
+    line-height: 16px;
     display: block;
     color: $black;
 }
