@@ -65,5 +65,22 @@
         <ul class="forum-nav-thread-list"></ul>
     </div>
 </script>
+<script type="text/javascript">
+    setTimeout(function() {
+        var navSearch = $('.forum-nav-search');
+        $('.discussion-body').on('click', function() {
+                navSearch.css('display', 'block'); 
+            
+        });
+
+        $('.forum-nav-browse, .forum-nav-browse-menu, .icon').on('click', function() {
+            if ($('.forum-nav-browse-menu-wrapper:hidden').length == true){
+                navSearch.css('display', 'none'); 
+            } else {
+                navSearch.css('display', 'block'); 
+            }
+        });
+    }, 200); 
+</script>
 
 

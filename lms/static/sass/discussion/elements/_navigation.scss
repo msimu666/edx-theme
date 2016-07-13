@@ -20,6 +20,9 @@
     border-bottom: none;
     width: 100%;
     background-color: $white;
+    &:focus:not(:disabled) {
+        border: !important;
+    }
 }
 
 .forum-nav-browse {
@@ -35,9 +38,11 @@
     text-align: left;
     &:hover,
     &:focus,
+    &:active,
     &.is-active {
         // converted to button from a;
         // need importants to overwrite later button styles
+        border: none !important;
         box-shadow: none !important;
         background-image: none !important;
         background-color: white !important;
@@ -136,35 +141,67 @@
 // Browse menu
 // -----------
 .forum-nav-browse-menu-wrapper {
-    border-bottom: none;
+    border: none !important;
     background: white;
+    &:focus {
+        border: !important;
+    }
 }
 
 .forum-nav-browse-filter {
     position: relative;
-    padding: ($baseline/4) 0;
+    padding: 0 !important;
     width: 84%;
     display: block;
-    margin: 0 auto;
+    margin: 20px 30px 20px 28px;
+    box-sizing: border-box;
     border: 0 !important;
-    border-bottom: 2px solid #B2B9E1 !important;
-    border-radius: none !important;
-    padding-left: 0 !important;
+    border-bottom: 2px solid $ee-blue !important;
+    border-radius: 0 !important;
 }
 
 .forum-nav-browse-filter .icon {
-    @include font-size(12);
+    font-size: 16px !important;
     position: absolute;
     margin-top: -6px;
-    top: 50%;
-    right: ($baseline/4 + 1px + $baseline / 4); // Wrapper padding + border + input padding
+    right: 2px;
+    color: $ee-blue;
+    top: 12px;
 }
-
 .forum-nav-browse-filter-input {
     width: 100%;
     font-size: 16px !important;
     font-family: $source-sans-pro !important;
     font-weight: 600;
+    padding-left: 0 !important;
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $ee-blue;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: $ee-blue;
+       opacity: 1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: $ee-blue;
+       opacity: 1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: $ee-blue;
+    }
+    // &:focus::-webkit-input-placeholder {
+    //     color: transparent;
+    // }
+    // &:focus:-moz-placeholder {
+    //     color: transparent;
+    // }
+    // /* FF 4-18 */
+    // &:focus::-moz-placeholder {
+    //     color: transparent;
+    // }
+    // /* FF 19+ */
+    // &:focus:-ms-input-placeholder {
+    //     color: transparent;
+    // }
 }
 
 .forum-nav-browse-title {
@@ -281,16 +318,15 @@
 .forum-nav-thread {
     border-bottom: none;
     background-color: $white;
+    margin: 8px 0;
     &.is-unread {
         background: $white;
         color: $ee-blue;
         .forum-nav-thread-comments-count {
             background-color: tint($ee-blue, 90%);
-            ;
             color: $ee-blue;
             &:after {
                 border-right-color: transparent;
-                ;
             }
         }
     }
@@ -308,7 +344,8 @@
         .forum-nav-thread-title {
             color: $white;
         }
-        .forum-nav-thread-comments-count {
+        .forum-nav-thread-comments-count, 
+        .forum-nav-thread-votes-count {
             background-color: transparent;
             color: white;
             &:after {
@@ -362,6 +399,8 @@
 .forum-nav-thread-wrapper-1 {
     @extend %forum-nav-thread-wrapper;
     width: 83%;
+    padding-left: 5px;
+    box-sizing: border-box;
 }
 
 .forum-nav-thread-wrapper-2 {
@@ -393,6 +432,8 @@
     margin-right: ($baseline/4);
     text-align: center;
     color: $black;
+    font-size: 14px;
+    font-weight: normal;
     &:last-child {
         margin-right: 0;
     }
