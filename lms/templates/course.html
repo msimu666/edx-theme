@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 <%page args="course" />
 <article class="course" id="${course.id | h}" role="region" aria-label="${course.display_name_with_default_escaped}">
   % if course.display_name_with_default_escaped == 'Metabolic Applied Research Strategy':
-  <a href="https://ethicon.edx.org/courses/Ethicon/MARS2014-2x/2014_2/about" target="_blank">
+  <a href="https://courses-matasano.edx.org/courses/Ethicon/MARS2014-1x/2014_1/about" target="_blank">
   % else:
     % if course.display_name_with_default_escaped == 'The Rise of Superheroes and Their Impact On Pop Culture':
       <a href="https://www.edx.org/course/rise-superheroes-impact-pop-culture-smithsonianx-popx1-1x-2" target="_blank">
