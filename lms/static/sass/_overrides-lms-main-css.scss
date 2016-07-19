@@ -226,9 +226,11 @@ header.global {
             position: absolute;
             &.fa-angle-left {
                 left: 10px;
+                top: 5px;
             }
             &.fa-angle-right {
                 right: 10px;
+                top: 5px;
             }
         }
         .nav-button-text {
