@@ -40,6 +40,11 @@ section.container {
         background: $white;
         box-sizing: border-box !important;
         .inner-wrapper {
+            ul {
+                font-family: 'Source Sans Pro';
+                font-size: 14px;
+                line-height: 1.2;
+            }
             margin-right: $baseline * 2!important;
             padding-left: $baseline*2.5;
             &>section {
