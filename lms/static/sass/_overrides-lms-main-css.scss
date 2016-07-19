@@ -214,11 +214,46 @@ header.global {
         background: #3E51B5;
         color: #fff;
         height: 44px;
+        .icon,
+        .nav-button-text {
+            font-size: 16px;
+            display: inline-block;
+            text-shadow: none;
+            font-weight: lighter;
+            margin-top: 2px;
+        }
+        .icon {
+            position: absolute;
+            &.fa-angle-left {
+                left: 10px;
+            }
+            &.fa-angle-right {
+                right: 10px;
+            }
+        }
+        .nav-button-text {
+            &.nav-button-text-previous {
+                margin-left: 10px;
+            }
+            &.nav-button-text-next {
+                margin-right: 10px;
+            }
+        }
         &:hover {
             background: #B2B9E1;
         }
-        &:focus {
+        &:focus,
+        &:active {
             box-shadow: none !important;
+        }
+        &:active {
+            background: $ee-blue-lighter !important;
+            color: $white !important;
+            border: 2px solid $ee-blue !important;
+        }
+        &:focus {
+            background: $ee-blue-lightest !important;
+            color: $ee-blue !important;
         }
     }
     .sequence-bottom {
