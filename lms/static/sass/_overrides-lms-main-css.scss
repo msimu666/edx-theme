@@ -256,6 +256,7 @@ header.global {
         &:focus {
             background: $ee-blue-lightest !important;
             color: $ee-blue !important;
+            border: 2px solid $ee-blue !important;
         }
     }
     .sequence-bottom {
