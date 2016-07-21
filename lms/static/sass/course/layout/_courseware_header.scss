@@ -46,9 +46,7 @@ nav.discussion.wrapper-course-material {
       }
 
       a {
-        
-        @extend %t-title7;
-        @extend %t-regular;
+        font-family: $source-sans-pro;
         font-size: 16px !important;
         font-weight: 600 !important;
         padding: 0 !important;
