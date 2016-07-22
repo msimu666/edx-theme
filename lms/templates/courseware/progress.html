@@ -164,7 +164,7 @@ from django.utils.http import urlquote_plus
           %if not chapter['display_name'] == "hidden":
             <section>
               <div class="chapter-main-menu-wrapper">
-                <h2>${ chapter['display_name'] | h}</h2>
+                <h3>${ chapter['display_name'] | h}</h3>
               </div>
 
               <div class="sections chapter-submenu-wrapper">
@@ -176,7 +176,7 @@ from django.utils.http import urlquote_plus
                   percentageString = "{0:.0%}".format( float(earned)/total) if earned > 0 and total > 0 else ""
                   %>
 
-                  <h3><a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}">
+                  <h4><a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}">
                     ${ section['display_name'] | h}
                     %if total > 0 or earned > 0:
                       <span class="sr">
@@ -187,7 +187,7 @@ from django.utils.http import urlquote_plus
                     %if total > 0 or earned > 0:
                       <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString ) | h}</span>
                     %endif
-                  </h3>
+                  </h4>
                   <p>
                     ${section['format'] | h}
 
@@ -204,12 +204,15 @@ from django.utils.http import urlquote_plus
 
                   <div class="scores">
                     %if len(section['scores']) > 0:
-                      <h3> ${ _("Problem Scores: ") if section['graded'] else _("Practice Scores: ")} </h3>
-                      <ol>
+                      <h4> ${ _("Problem Scores: ") if section['graded'] else _("Practice Scores: ")} </h4>
+                      <!--<ol>
                         %for score in section['scores']:
                         <li>${"{0:.3n}/{1:.3n}".format(float(score.earned),float(score.possible)) | h}</li>
                         %endfor
-                      </ol>
+                      </ol>-->
+                      %if total > 0 or earned > 0:
+                        <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString ) | h}</span>
+                      %endif
                     %else:
                       <h3 class="no-scores"> ${_("No problem scores in this section")} </h3>
                     %endif
@@ -223,6 +226,7 @@ from django.utils.http import urlquote_plus
           %endif
         %endfor
       </div> <!--End chapters-->
+      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
       <script>
         $( ".chapters" ).accordion({
           header: ".chapter-main-menu-wrapper",
@@ -243,6 +247,7 @@ from django.utils.http import urlquote_plus
             ui.header.parent("section").css("margin-left","-1px");
           }
         });
+        $('h3.no-scores').parent().parent().hide();
       </script>
     </div>
   </div>

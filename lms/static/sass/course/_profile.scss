@@ -1,0 +1,12 @@
+.profile-wrapper {
+  .course-info {
+    
+    > .chapters {
+      .chapter-main-menu-wrapper {
+        > h3 {
+          margin-left: $baseline*1.5;
+        }
+      }
+    }
+  }
+}
