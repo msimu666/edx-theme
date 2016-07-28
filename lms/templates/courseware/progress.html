@@ -164,6 +164,12 @@ from django.utils.http import urlquote_plus
         <div class="third-column-header">Grade</div>
       </div>
       <div class="chapters">
+      <% 
+      whole_total = 0
+      whole_total_earned = 0
+      whole_graded = 0
+      whole_graded_earned = 0
+      %>
         %for chapter in courseware_summary:
           %if not chapter['display_name'] == "hidden":
             <section>
@@ -177,8 +183,16 @@ from django.utils.http import urlquote_plus
                   <%
                   earned = section['section_total'].earned
                   total = section['section_total'].possible
+                  whole_total = whole_total + total
+                  whole_total_earned = whole_total_earned + earned
+                  if section['graded']:
+                    whole_graded = whole_graded + total
+                    whole_graded_earned = whole_graded_earned + earned
                   percentageString = "{0:.0%}".format( float(earned)/total) if earned > 0 and total > 0 else ""
+                  final_grade = "{0:.0%}".format( float(whole_graded_earned)/whole_graded) if whole_graded_earned > 0 and whole_graded > 0 else ""
+                  
                   %>
+                  
                   <div class="progress-and-title">
                     <p>
                       ${ section['display_name'] | h}
@@ -200,6 +214,7 @@ from django.utils.http import urlquote_plus
                     %else:
                       %if section['graded']:
                         <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Complete Assignment</a>
+
                       %else:
                         <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Participate</a>
                       %endif
@@ -247,6 +262,17 @@ from django.utils.http import urlquote_plus
             </section> <!--End chapter-->
           %endif
         %endfor
+        <div class="total-points-container">
+          <div class="first-column-caption">Total Points</div>
+          <div class="second-column-points">${whole_total_earned}/${whole_total}</div>
+          <div class="third-column-grade">&nbsp</div>
+          <div class="first-column-caption">Graded Points</div>
+          <div class="second-column-points">${whole_graded_earned}/${whole_graded}</div>
+          <div class="third-column-grade">&nbsp</div>
+          <div class="first-column-caption">Final Grade</div>
+          <div class="second-column-points">&nbsp</div>
+          <div class="third-column-grade">${final_grade}</div>
+        </div>
       </div> <!--End chapters-->
       <script>
         $('p.no-scores').closest('.assignment').hide();

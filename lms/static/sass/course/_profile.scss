@@ -94,6 +94,29 @@
                     }
                 }
             }
+            .total-points-container {
+                @include outer-container;
+                font-family: $source-sans-pro;
+                .first-column-caption,
+                .second-column-points,
+                .third-column-grade {
+                    margin-top: 15px;
+                }
+                .first-column-caption {
+                    @include span-columns(8);
+                    text-align: right;
+                }
+                .second-column-points {
+                    @include span-columns(2);
+                    text-align: center;
+                    font-weight: 600;
+                }
+                .third-column-grade {
+                    @include span-columns(2);
+                    font-weight: 600;
+                    @include omega();
+                }
+            }
         }
     }
 }
