@@ -24,7 +24,8 @@ from django.utils.http import urlquote_plus
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.stack.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.symbol.js') | h}"></script>
-<script type="text/javascript" src="${static.url('js/courseware/certificates_api.js') | h}"></script>
+<!-- <script type="text/javascript" src="${static.url('js/vendor/canvasjs.min.js') | h}"></script>
+ --><script type="text/javascript" src="${static.url('js/courseware/certificates_api.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/courseware/credit_progress.js') | h}"></script>
 <script>
   ${progress_graph.body(grade_summary, course.grade_cutoffs, "grade-detail-graph", not course.no_grade, not course.no_grade) | h}
@@ -43,7 +44,6 @@ from django.utils.http import urlquote_plus
           <a class="instructor-info-action studio-view" href="${studio_url | h}">${_("View Grading in studio")}</a>
         </div>
       % endif
-
       <header class="progress-certificates">
         <h1 class="progress-certificates-title">${_("Course Progress for Student '{username}' ({email})").format(username=student.username, email=student.email) | h}</h1>
       </header>
@@ -94,11 +94,11 @@ from django.utils.http import urlquote_plus
         %endif
       </div>
       %endif
-
+<!-- 
       %if not course.disable_progress_graph:
         <div class="grade-detail-graph" id="grade-detail-graph" aria-hidden="true"></div>
       %endif
-
+ -->
       % if credit_course_requirements:
         <section class="credit-eligibility">
             <div class="credit-eligibility-container">
@@ -158,39 +158,66 @@ from django.utils.http import urlquote_plus
             </div>
         </section>
       %endif
-
+      <div class="column-headers">
+        <div class="first-column-header">Assignment</div>
+        <div class="second-column-header">&nbsp</div>
+        <div class="third-column-header">Grade</div>
+      </div>
       <div class="chapters">
         %for chapter in courseware_summary:
           %if not chapter['display_name'] == "hidden":
             <section>
-              <div class="chapter-main-menu-wrapper">
-                <h3>${ chapter['display_name'] | h}</h3>
+              <div class="chapter-main-menu-wrapper-ee">
+                ${ chapter['display_name'] | h}
               </div>
 
-              <div class="sections chapter-submenu-wrapper">
+              <div class="chapter-submenu-wrapper-ee">
                 %for section in chapter['sections']:
-                <div>
+                <div class="assignment">
                   <%
                   earned = section['section_total'].earned
                   total = section['section_total'].possible
                   percentageString = "{0:.0%}".format( float(earned)/total) if earned > 0 and total > 0 else ""
                   %>
+                  <div class="progress-and-title">
+                    <p>
+                      ${ section['display_name'] | h}
+                      %if earned > 0:
+                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="answers">Answers <i class="fa fa-angle-right" aria-hidden="true"></i>
+                      %endif
 
-                  <h3><a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}">
-                    ${ section['display_name'] | h}
-                    %if total > 0 or earned > 0:
-                      <span class="sr">
-                        ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total))) | h}
-                      </span>
-                    %endif
-                    </a>
-                    %if total > 0 or earned > 0:
-                      <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString ) | h}</span>
-                    %endif
-                  </h3>
-                  <p>
-                    ${section['format'] | h}
+                      %if total > 0 or earned > 0:
+                        <span class="sr">
+                          ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total))) | h}
+                        </span>
+                      %endif
+                      </a>
+                    </p>
 
+                    %if earned > 0:
+                      <progress class="complete-started-progress" value="${section['section_total'].earned}" max="${section['section_total'].possible}"></progress>
+                      <!-- <progress class="remaining-progress" value="${section['section_total'].earned}" max="${section['section_total'].possible}"></progress> -->
+                    %else:
+                      %if section['graded']:
+                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Complete Assignment</a>
+                      %else:
+                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Participate</a>
+                      %endif
+                    %endif
+
+                    <div class="scores">
+                    %if len(section['scores']) > 0:
+                      <div class="activity-notify"> ${ _("") if section['graded'] else _("This activity does not affect your grade")} </div>
+                      <!-- 
+                      %if total > 0 or earned > 0:
+                        <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString ) | h}</span>
+                      %endif
+                       -->
+                    %else:
+                      <p class="no-scores"> ${_("No problem scores in this section")} </p>
+                    %endif
+                    </div>
+                    
                     %if section.get('due') is not None:
                       <%
                           formatted_string = get_time_display(section['due'], course.due_date_display_format, coerce_tz=settings.TIME_ZONE_DISPLAYED_FOR_DEADLINES)
@@ -200,24 +227,19 @@ from django.utils.http import urlquote_plus
                       ${due_date | h}
                       </em>
                     %endif
-                  </p>
+                  </div>
 
-                  <div class="scores">
-                    %if len(section['scores']) > 0:
-                      <h4> ${ _("Problem Scores: ") if section['graded'] else _("Practice Scores: ")} </h4>
-                      <!--<ol>
-                        %for score in section['scores']:
-                        <li>${"{0:.3n}/{1:.3n}".format(float(score.earned),float(score.possible)) | h}</li>
-                        %endfor
-                      </ol>-->
-                      %if total > 0 or earned > 0:
-                        <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString ) | h}</span>
-                      %endif
-                    %else:
-                      <h3 class="no-scores"> ${_("No problem scores in this section")} </h3>
+                  <div class="engagement-grade">
+                    %if total > 0 or earned > 0:
+                      <span> ${"{0:.3n}/{1:.3n}".format( float(earned), float(total) ) | h}</span>
                     %endif
                   </div>
 
+                  <div class="percentage-grade">
+                    <span>${percentageString}</span>
+                  </div>
+
+                  
 
                 </div> <!--End section-->
                 %endfor
@@ -226,28 +248,13 @@ from django.utils.http import urlquote_plus
           %endif
         %endfor
       </div> <!--End chapters-->
-      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
       <script>
-        $( ".chapters" ).accordion({
-          header: ".chapter-main-menu-wrapper",
-          animate: "swing",
-          heightStyle: "content",
-          beforeActivate: function( event, ui ) 
-          {
-            ui.oldHeader.parent("section").css("border","");
-            ui.oldHeader.parent("section").css("margin-left",0);
-            ui.newHeader.parent("section").css("border","2px solid #D9853B");
-            ui.newHeader.parent("section").css("border-radius","5px");
-            ui.newHeader.parent("section").css("margin-left","-1px");
-          },
-          create: function( event, ui ) 
-          {
-            ui.header.parent("section").css("border","2px solid #D9853B");
-            ui.header.parent("section").css("border-radius","5px");
-            ui.header.parent("section").css("margin-left","-1px");
+        $('p.no-scores').closest('.assignment').hide();
+        $.each($('.chapters section'), function () {
+          if(!$(this).find('.chapter-submenu-wrapper-ee div:visible').length) {
+            $(this).hide();
           }
         });
-        $('h3.no-scores').parent().parent().hide();
       </script>
     </div>
   </div>
