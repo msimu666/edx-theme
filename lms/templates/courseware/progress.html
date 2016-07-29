@@ -264,10 +264,10 @@ from django.utils.http import urlquote_plus
         %endfor
         <div class="total-points-container">
           <div class="first-column-caption">Total Points</div>
-          <div class="second-column-points">${whole_total_earned}/${whole_total}</div>
+          <div class="second-column-points">${"{0:.3n}/{1:.3n}".format( float(whole_total_earned), float(whole_total) ) | h}</div>
           <div class="third-column-grade">&nbsp</div>
           <div class="first-column-caption">Graded Points</div>
-          <div class="second-column-points">${whole_graded_earned}/${whole_graded}</div>
+          <div class="second-column-points">${"{0:.3n}/{1:.3n}".format( float(whole_graded_earned), float(whole_graded) ) | h}</div>
           <div class="third-column-grade">&nbsp</div>
           <div class="first-column-caption">Final Grade</div>
           <div class="second-column-points">&nbsp</div>
