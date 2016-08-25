@@ -1,16 +1,87 @@
 .profile-wrapper {
     margin: ($baseline*2) auto !important;
+    .current-course-container {
+        @include outer-container;
+        margin-bottom: $baseline*3;
+        .grade-percent {
+            @include span-columns(4);
+            .grade-summary {
+                font-size: 36px;
+                font-family: $source-sans-pro;
+                margin-bottom: $baseline*1.5;
+                margin-top: $baseline/4;
+            }
+        }
+        h3 {
+            margin: $baseline 0;
+        }
+        .course-completion-progressbar {
+            @include span-columns(8);
+            padding: ($baseline*2) 0;
+            position: relative;
+            span {
+                font-size: 14px;
+                font-family: $source-sans-pro;
+            }
+            i {
+                position: absolute;
+                font-size: 36px;
+                margin-left: -7px;
+                top: 13%;
+                font-size: 20px;
+            }
+            progress {
+                color: #df4050;
+                font-size: .6em;
+                line-height: 1.5em;
+                text-indent: .5em;
+                width: 100%;
+                height: 4.5em;
+                background: #fff;
+            }
+            progress::-webkit-progress-bar {
+                background: $ee-blue-lightest;
+            }
+            .fail-color::-webkit-progress-value {
+                background: #df4050;
+            }
+            .pass-color::-webkit-progress-value {
+                background: $ee-blue;
+            }
+            .points-remaining,
+            .points-earned,
+            .points-graduation,
+            .points-total {
+                position: absolute;
+                margin-top: 5px;
+            }
+            .points-remaining {
+                font-weight: 700;
+                margin-top: 5px;
+            }
+            .points-earned {
+                top: 0;
+            }
+            .points-graduation {
+                top: 0;
+            }
+            .points-total {
+                right: 0;
+            }
+        }
+    }
     .course-info {
         .column-headers {
             @include outer-container;
             font-family: $source-sans-pro;
-            font-weight: 600;
+            font-weight: normal;
             font-size: 18px;
             .first-column-header {
                 @include span-columns(8);
             }
             .second-column-header {
                 @include span-columns(2);
+                text-align: center;
             }
             .third-column-header {
                 @include span-columns(2);
@@ -18,17 +89,18 @@
         }
         .progress-certificates {
             .progress-certificates-title {
-                font-size: 30px;
+                font-size: 36px;
                 font-style: normal !important;
                 margin-bottom: 20px;
                 font-family: $source-sans-pro !important;
             }
         }
         > .chapters {
-            border-top: 2px solid #e3e3e3 !important;
+            border-top: 2px solid $ee-blue !important;
+            margin-top: 5px !important;
             section {
                 @include outer-container;
-                border-bottom: 2px solid #e3e3e3 !important;
+                border-bottom: 2px solid $ee-blue !important;
                 padding: 20px 0 0 0 !important;
                 .chapter-main-menu-wrapper-ee {
                     @include fill-parent();
@@ -67,7 +139,7 @@
                         }
                         .engagement-grade,
                         .percentage-grade {
-                            line-height: 5;
+                            line-height: 4.4;
                         }
                         .engagement-grade {
                             @include span-columns(2);
@@ -82,14 +154,14 @@
                             line-height: 1.5em;
                             text-indent: .5em;
                             width: 100%;
-                            height: 3.8em;
+                            height: 2.8em;
                             background: #fff;
                         }
                         progress::-webkit-progress-bar {
                             background: $ee-blue-lightest;
                         }
                         progress::-webkit-progress-value {
-                            background: $ee-blue;
+                            background: $ee-blue-lighter;
                         }
                     }
                 }

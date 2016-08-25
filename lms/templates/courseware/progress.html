@@ -1,6 +1,7 @@
 <%inherit file="/main.html" />
 <%namespace name='static' file='/static_content.html'/>
 <%!
+from math import ceil
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from util.date_utils import get_time_display, DEFAULT_SHORT_DATE_FORMAT
@@ -24,8 +25,7 @@ from django.utils.http import urlquote_plus
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.stack.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.symbol.js') | h}"></script>
-<!-- <script type="text/javascript" src="${static.url('js/vendor/canvasjs.min.js') | h}"></script>
- --><script type="text/javascript" src="${static.url('js/courseware/certificates_api.js') | h}"></script>
+<script type="text/javascript" src="${static.url('js/courseware/certificates_api.js') | h}"></script>
 <script type="text/javascript" src="${static.url('js/courseware/credit_progress.js') | h}"></script>
 <script>
   ${progress_graph.body(grade_summary, course.grade_cutoffs, "grade-detail-graph", not course.no_grade, not course.no_grade) | h}
@@ -45,7 +45,7 @@ from django.utils.http import urlquote_plus
         </div>
       % endif
       <header class="progress-certificates">
-        <h1 class="progress-certificates-title">${_("Course Progress for Student '{username}' ({email})").format(username=student.username, email=student.email) | h}</h1>
+        <h1 class="progress-certificates-title">${_("Progress") | h}</h1>
       </header>
 
       %if show_generate_cert_btn:
@@ -98,7 +98,13 @@ from django.utils.http import urlquote_plus
       %if not course.disable_progress_graph:
         <div class="grade-detail-graph" id="grade-detail-graph" aria-hidden="true"></div>
       %endif
- -->
+ --> 
+
+      <div class="top-progbar">
+
+      </div>
+
+
       % if credit_course_requirements:
         <section class="credit-eligibility">
             <div class="credit-eligibility-container">
@@ -160,8 +166,8 @@ from django.utils.http import urlquote_plus
       %endif
       <div class="column-headers">
         <div class="first-column-header">Assignment</div>
-        <div class="second-column-header">&nbsp</div>
-        <div class="third-column-header">Grade</div>
+        <div class="second-column-header">Grade</div>
+        <div class="third-column-header"></div>
       </div>
       <div class="chapters">
       <% 
@@ -253,15 +259,49 @@ from django.utils.http import urlquote_plus
                   <div class="percentage-grade">
                     <span>${percentageString}</span>
                   </div>
-
-                  
-
                 </div> <!--End section-->
                 %endfor
               </div> <!--End sections-->
             </section> <!--End chapter-->
           %endif
         %endfor
+
+        <%
+          graded_points = "{0:.3n}".format(float(whole_graded_earned))
+          total_points = "{0:.3n}".format(float(whole_total))
+          points_needed_for_graduation = int(ceil(int(whole_graded) * course.grade_cutoffs['Pass']))
+          pass_limit = course.grade_cutoffs['Pass'] * 100
+          sfg = int(final_grade.strip('%'))
+          if sfg < 10:
+            final_grade_alignment = 0
+          else:
+            final_grade_alignment = (sfg - 19) if sfg < pass_limit else sfg
+          
+        %>
+        <div class="current-course-container">
+          <h3>Current Course Grade</h3>
+          <div class="grade-percent">
+            <div class="grade-summary">${grade_summary['grade']} | ${final_grade}</div>
+            <p>This Grade is based on all graded assignments in the course. This will only become your final grade if you complete the course right now. 
+            ${ _("Continue to complete assignments to pass the class!") if int(graded_points) < int(points_needed_for_graduation) else _("Keep doing well!")}</p>
+          </div>
+          <div class="course-completion-progressbar">
+            <i class="fa fa-caret-down" style="left: ${final_grade}" aria-hidden="true"></i>
+          %if int(graded_points) < int(points_needed_for_graduation):
+            <progress class="fail-color" value="${final_grade.strip('%')}" max="100"></progress>
+            <span class="points-graduation" style="left: ${pass_limit - 1}%">${points_needed_for_graduation | h} pts needed for certification</span>
+            <span class="points-remaining">Only ${(points_needed_for_graduation - int(graded_points)) | h} pts more to earn your certificate!</span>
+            <i class="fa fa-caret-down" style="left: ${pass_limit}%" aria-hidden="true"></i>
+            <span class="points-earned" style="left: ${final_grade_alignment+1}%" >You have earned ${graded_points | h} pts</span>
+          %else:
+            <progress class="pass-color" value="${final_grade.strip('%')}" max="100"></progress>
+            <span class="points-remaining">You have earned a certificate. Keep up the good work!</span>
+            <span class="points-earned" style="left: ${final_grade_alignment-1}%" >You have earned ${graded_points | h} pts</span>
+          %endif    
+            <span class="points-total">${int(whole_graded) | h} pts total</span>
+          </div>
+        </div>
+
         <div class="total-points-container">
           <div class="first-column-caption">Total Points</div>
           <div class="second-column-points">${"{0:.3n}/{1:.3n}".format( float(whole_total_earned), float(whole_total) ) | h}</div>
@@ -281,6 +321,7 @@ from django.utils.http import urlquote_plus
             $(this).hide();
           }
         });
+        $('.current-course-container').appendTo('.top-progbar');
       </script>
     </div>
   </div>
