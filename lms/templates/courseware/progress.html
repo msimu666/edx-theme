@@ -283,7 +283,7 @@ from django.utils.http import urlquote_plus
           <div class="grade-percent">
             <div class="grade-summary">${grade_summary['grade']} | ${final_grade}</div>
             <p>This Grade is based on all graded assignments in the course. This will only become your final grade if you complete the course right now. 
-            ${ _("Continue to complete assignments to pass the class!") if int(graded_points) < int(points_needed_for_graduation) else _("Keep doing well!")}</p>
+            ${ _("Continue to complete assignments to pass the class!") if graded_points < points_needed_for_graduation else _("Keep doing well!")}</p>
           </div>
           <div class="course-completion-progressbar">
             <i class="fa fa-caret-down" style="left: ${final_grade}" aria-hidden="true"></i>
