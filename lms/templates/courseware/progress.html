@@ -130,7 +130,7 @@ from django.utils.http import urlquote_plus
                         <div class="requirement-name">
                             ${_(requirement['display_name']) | h}
                             %if requirement['namespace'] == 'grade':
-                                <span>${int(requirement['criteria']['min_grade'] * 100) | h}%</span>
+                                <span>${float(requirement['criteria']['min_grade'] * 100) | h}%</span>
                             %endif
                         </div>
                         <div class="requirement-status">
@@ -146,7 +146,7 @@ from django.utils.http import urlquote_plus
                                 %elif requirement['status'] == 'satisfied':
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                     % if requirement['namespace'] == 'grade' and 'final_grade' in requirement['reason']:
-                                    <span>${int(requirement['reason']['final_grade'] * 100) | h}%</span>
+                                    <span>${float(requirement['reason']['final_grade'] * 100) | h}%</span>
                                     % else:
                                     <span>${_("Completed")} ${get_time_display(requirement['status_date'], DEFAULT_SHORT_DATE_FORMAT, settings.TIME_ZONE)}</span>
                                     % endif
@@ -269,9 +269,9 @@ from django.utils.http import urlquote_plus
         <%
           graded_points = "{0:.3n}".format(float(whole_graded_earned))
           total_points = "{0:.3n}".format(float(whole_total))
-          points_needed_for_graduation = int(ceil(int(whole_graded) * course.grade_cutoffs['Pass']))
+          points_needed_for_graduation = float(ceil(float(whole_graded) * course.grade_cutoffs['Pass']))
           pass_limit = course.grade_cutoffs['Pass'] * 100
-          sfg = int(final_grade.strip('%'))
+          sfg = float(final_grade.strip('%'))
           if sfg < 10:
             final_grade_alignment = 0
           else:
@@ -283,14 +283,14 @@ from django.utils.http import urlquote_plus
           <div class="grade-percent">
             <div class="grade-summary">${grade_summary['grade']} | ${final_grade}</div>
             <p>This Grade is based on all graded assignments in the course. This will only become your final grade if you complete the course right now. 
-            ${ _("Continue to complete assignments to pass the class!") if graded_points < points_needed_for_graduation else _("Keep doing well!")}</p>
+            ${ _("Continue to complete assignments to pass the class!") if float(graded_points) < float(points_needed_for_graduation) else _("Keep doing well!")}</p>
           </div>
           <div class="course-completion-progressbar">
             <i class="fa fa-caret-down" style="left: ${final_grade}" aria-hidden="true"></i>
-          %if int(graded_points) < int(points_needed_for_graduation):
+          %if float(graded_points) < float(points_needed_for_graduation):
             <progress class="fail-color" value="${final_grade.strip('%')}" max="100"></progress>
             <span class="points-graduation" style="left: ${pass_limit - 1}%">${points_needed_for_graduation | h} pts needed for certification</span>
-            <span class="points-remaining">Only ${(points_needed_for_graduation - int(graded_points)) | h} pts more to earn your certificate!</span>
+            <span class="points-remaining">Only ${(points_needed_for_graduation - float(graded_points)) | h} pts more to earn your certificate!</span>
             <i class="fa fa-caret-down" style="left: ${pass_limit}%" aria-hidden="true"></i>
             <span class="points-earned" style="left: ${final_grade_alignment+1}%" >You have earned ${graded_points | h} pts</span>
           %else:
@@ -298,7 +298,7 @@ from django.utils.http import urlquote_plus
             <span class="points-remaining">You have earned a certificate. Keep up the good work!</span>
             <span class="points-earned" style="left: ${final_grade_alignment-1}%" >You have earned ${graded_points | h} pts</span>
           %endif    
-            <span class="points-total">${int(whole_graded) | h} pts total</span>
+            <span class="points-total">${float(whole_graded) | h} pts total</span>
           </div>
         </div>
 
