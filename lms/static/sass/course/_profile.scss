@@ -115,6 +115,9 @@
                 font-size: 14px;
                 right: 0 !important;
                 margin-bottom: 0 !important;
+                &:hover {
+                    background: $ee-blue-lighter !important;
+                }
             }
             border-top: 2px solid $ee-blue !important;
             margin-top: 5px !important;
