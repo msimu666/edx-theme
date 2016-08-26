@@ -203,7 +203,7 @@ from django.utils.http import urlquote_plus
                     <p>
                       ${ section['display_name'] | h}
                       %if earned > 0:
-                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="answers">Answers <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="answers">Go to answers
                       %endif
 
                       %if total > 0 or earned > 0:
@@ -219,10 +219,10 @@ from django.utils.http import urlquote_plus
                       <!-- <progress class="remaining-progress" value="${section['section_total'].earned}" max="${section['section_total'].possible}"></progress> -->
                     %else:
                       %if section['graded']:
-                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Complete Assignment</a>
+                        <a class="btn" href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Complete Assignment</a>
 
                       %else:
-                        <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Participate</a>
+                        <a class="btn" href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section['url_name'])) | h}" class="non-earned-link">Participate</a>
                       %endif
                     %endif
 
@@ -291,7 +291,7 @@ from django.utils.http import urlquote_plus
             <progress class="fail-color" value="${final_grade.strip('%')}" max="100"></progress>
             <span class="points-graduation" style="left: ${pass_limit - 1}%">${points_needed_for_graduation | h} pts needed for certification</span>
             <span class="points-remaining">Only ${(points_needed_for_graduation - float(graded_points)) | h} pts more to earn your certificate!</span>
-            <i class="fa fa-caret-down" style="left: ${pass_limit}%" aria-hidden="true"></i>
+            <i class="fa fa-caret-down pass-limit-caret" style="left: ${pass_limit}%" aria-hidden="true"></i>
             <span class="points-earned" style="left: ${final_grade_alignment+1}%" >You have earned ${graded_points | h} pts</span>
           %else:
             <progress class="pass-color" value="${final_grade.strip('%')}" max="100"></progress>

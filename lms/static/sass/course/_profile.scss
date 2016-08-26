@@ -30,6 +30,9 @@
                 top: 13%;
                 font-size: 20px;
             }
+            .pass-limit-caret {
+                color: $ee-blue-lightest;
+            }
             progress {
                 color: #df4050;
                 font-size: .6em;
@@ -64,6 +67,7 @@
             }
             .points-graduation {
                 top: 0;
+                color: $ee-blue-lightest;
             }
             .points-total {
                 right: 0;
@@ -96,6 +100,22 @@
             }
         }
         > .chapters {
+            .btn {
+                color: white !important;
+                display: inline-block;
+                padding: 0px 40px !important;
+                line-height: 2.3 !important;
+                background: $ee-blue !important;
+                border: 0 !important;
+                border-radius: 0 !important;
+                transition: all 0.3s ease 0s !important;
+                box-shadow: none !important;
+                font-family: $source-sans-pro;
+                font-weight: 700 !important;
+                font-size: 14px;
+                right: 0 !important;
+                margin-bottom: 0 !important;
+            }
             border-top: 2px solid $ee-blue !important;
             margin-top: 5px !important;
             section {
@@ -126,7 +146,8 @@
                                 color: #8c8c8c;
                             }
                             .answers {
-                                text-decoration: underline;
+                                text-decoration: none;
+                                color: $ee-blue;
                                 cursor: pointer;
                                 text-transform: uppercase;
                                 font-size: 10px;
