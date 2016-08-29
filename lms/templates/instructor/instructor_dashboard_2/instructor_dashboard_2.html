@@ -147,5 +147,5 @@ $('.nav-item').click(function(event) {
 
 // get current active tab from top navbar (breadcrumbs hackity-hack)
 $('.current-active-part').text($('.course-tabs').find('.active').clone().children().remove().end().text());
-
+$('.course-tabs li:contains("Wiki")').remove();
 </script>
