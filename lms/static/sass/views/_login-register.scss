@@ -183,7 +183,18 @@ $sm-btn-linkedin: #0077b5;
             }
         }
         .checkbox-remember {
-            display: none;
+            display: block;
+            position: relative;
+            height: 20px;
+            label {
+                position: absolute;
+                left: 25px;
+                top: 1px;
+            }
+            input {
+                position: absolute;
+                top: 5px;
+            }
         }
         &:focus {
             outline: none;
