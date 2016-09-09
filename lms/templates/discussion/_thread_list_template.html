@@ -1,14 +1,22 @@
 <%! from django.utils.translation import ugettext as _ %>
 <script type="text/template" id="thread-list-template">
     <div class="forum-nav-header">
-        <button type="button" class="forum-nav-browse" id="forum-nav-browse" aria-haspopup="true">
+        <button type="button" class="forum-nav-browse1" id="forum-nav-browse" aria-haspopup="true">
             ## There is no whitespace between these because the front-end JS code
             ## needs to precisely compute the available width for forum-nav-
             ## browse-current in order to do truncation of topic names.
             <span class="sr">${_("Discussion topics; currently listing: ")}</span>
             <span class="forum-nav-browse-current">${_("All Discussions")}</span>
-            <span class="forum-nav-browse-drop-arrow" aria-hidden="true">▾</span>
+            <span class="forum-nav-browse-drop-arrow change-icon" aria-hidden="true">
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                <i class="fa fa-caret-down" aria-hidden="true" style="display: none;"></i>
+            </span>
         </button>
+        
+        
+    </div>
+    <%include file="_filter_dropdown.html" />
+    <div class="forum-nav-thread-list-wrapper" id="sort-filter-wrapper" tabindex="-1">
         <div class="forum-nav-refine-bar">
             <label class="forum-nav-filter-main">
                 ## Translators: This labels a filter menu in forum navigation
@@ -58,29 +66,50 @@
                 </label>
             </div>
         </form>
-    </div>
-    <%include file="_filter_dropdown.html" />
-    <div class="forum-nav-thread-list-wrapper" id="sort-filter-wrapper" tabindex="-1">
         <div class="search-alerts"></div>
         <ul class="forum-nav-thread-list"></ul>
     </div>
 </script>
 <script type="text/javascript">
-    setTimeout(function() {
-        var navSearch = $('.forum-nav-search');
-        $('.discussion-body').on('click', function() {
-                navSearch.css('display', 'block'); 
+    // setTimeout(function() {
+    //     var navSearch = $('.forum-nav-search');
+    //     $('.discussion-body').on('click', function() {
+    //             navSearch.css('display', 'block'); 
             
+    //     });
+
+    //     $('.forum-nav-browse, .forum-nav-browse-menu, .icon').on('click', function() {
+    //         if ($('.forum-nav-browse-menu-wrapper:hidden').length == true){
+    //             navSearch.css('display', 'none'); 
+    //         } else {
+    //             navSearch.css('display', 'block'); 
+    //         }
+    //     });
+    // }, 200); 
+
+     setTimeout(function() {
+       $('.forum-nav-browse1').mouseenter(function(){
+            $('.forum-nav-thread-list-wrapper').slideUp();
+            $('.forum-nav-browse-menu-wrapper').slideDown();
+            $('.fa-caret-down').css("display", "block");
+            $('.fa-caret-right').css("display", "none");
         });
 
-        $('.forum-nav-browse, .forum-nav-browse-menu, .icon').on('click', function() {
-            if ($('.forum-nav-browse-menu-wrapper:hidden').length == true){
-                navSearch.css('display', 'none'); 
-            } else {
-                navSearch.css('display', 'block'); 
-            }
+        $(".forum-nav-browse-menu-wrapper, .forum-nav-refine-bar").mouseleave(function(){
+            $('.forum-nav-browse-menu-wrapper').slideUp();
+            $('.forum-nav-thread-list-wrapper').slideDown();
+            $('.fa-caret-down').css("display", "none");
+            $('.fa-caret-right').css("display", "block");
+        });
+
+        $('.forum-nav').mouseleave(function(){
+            $('.forum-nav-browse-menu-wrapper').slideUp();
+            $('.forum-nav-thread-list-wrapper').slideDown();
+            $('.fa-caret-down').css("display", "none");
+            $('.fa-caret-right').css("display", "block");
         });
     }, 200); 
+
 </script>
 
 

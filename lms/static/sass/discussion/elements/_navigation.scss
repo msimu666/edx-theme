@@ -25,7 +25,7 @@
     }
 }
 
-.forum-nav-browse {
+.forum-nav-browse1 {
     @include box-sizing(border-box);
     @include fill-parent();
     display: block;
@@ -232,6 +232,7 @@
     overflow-y: scroll;
     list-style: none;
     padding: 0px 30px;
+    height: 380px !important;
 }
 
 .forum-nav-browse-submenu {
@@ -301,6 +302,7 @@
 .forum-nav-thread-list {
     overflow-y: auto;
     list-style: none;
+    height: 380px !important;
     .new-post-btn {
         @extend .new-ee-button;
         display: block !important;
