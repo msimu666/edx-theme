@@ -195,7 +195,7 @@ from django.utils.http import urlquote_plus
                     whole_graded = whole_graded + total
                     whole_graded_earned = whole_graded_earned + earned
                   percentageString = "{0:.0%}".format( float(earned)/total) if earned > 0 and total > 0 else ""
-                  final_grade = "{0:.0%}".format( float(whole_graded_earned)/whole_graded) if whole_graded_earned > 0 and whole_graded > 0 else ""
+                  final_grade = "{0:.0%}".format( float(whole_graded_earned)/whole_graded) if whole_graded_earned > 0 and whole_graded > 0 else "0"
                   
                   %>
                   
