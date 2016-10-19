@@ -156,10 +156,6 @@ from openedx.core.lib.courses import course_image_url
         %if user.is_authenticated() and registered:
           %if show_courseware_link:
             <a href="${course_target}" class="view-course-detail">
-          %endif
-
-          
-          %if show_courseware_link:
              ${_("Courseware")}
             </a>
           %endif
