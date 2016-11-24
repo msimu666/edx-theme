@@ -288,6 +288,29 @@ body.view-dashboard {
             }
         }
     }
+    .dashboard-search-bar {
+        .edx-search-button {
+            a {
+                margin-top: 5px;
+                color: #fff;
+                width: 100%;
+                font-weight: 400;
+                background: rgba(255, 153, 1, 1);
+                height: 30px;
+                font-size: 14px;
+                font-family: $source-sans-pro, "Open Sans", Verdana, Geneva, sans-serif;
+                float: right;
+                margin-bottom: $baseline;
+                text-align: center;
+                line-height: 2;
+                text-decoration: none;
+                &:hover{
+                    background: rgba(255, 153, 1, 0.5);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
     .mocked-courses {
         h4 {
             margin-top: $baseline*2.5;
