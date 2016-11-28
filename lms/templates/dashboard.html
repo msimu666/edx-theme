@@ -135,7 +135,7 @@ from openedx.core.djangolib.markup import Text, HTML
         <h4 for="dashboard-search-input">${_('Search Your Courses')}</h4>
         <div class="search-field-wrapper">
           <input id="dashboard-search-input" type="text" class="search-field" placeholder="Search"/>
-          <button type="submit" class="search-button" aria-label="${_('Search')}">
+          <button class="search-button" aria-label="${_('Search')}">
             <i class="icon fa fa-search" aria-hidden="true"></i>
           </button>
           <button type="button" class="cancel-button" aria-label="${_('Clear search')}">
@@ -144,7 +144,7 @@ from openedx.core.djangolib.markup import Text, HTML
         </div>
       </form>
       <div class="edx-search-button">
-        <a href="https://www.edx.org/course?course=all" target="_blank">Search edX Courses</a>
+        <a href="https://www.edx.org/course?search_query=" target="_blank">Search edX Courses</a>
       </div>
       <div class="mocked-courses">
         <h4>Recommended</h4>
@@ -263,3 +263,16 @@ from openedx.core.djangolib.markup import Text, HTML
     </form>
   </div>
 </section>
+<script>
+// disable default click event
+$('.search-button').click(false);
+// Ori wants link edx.org search rather than searching current courses
+$('.edx-search-button a').on('click', function() {
+  var searchInputValue = $('#dashboard-search-input').val();
+  if (searchInputValue) {
+    $(this).attr('href', 'https://www.edx.org/course?search_query=' + searchInputValue);
+  } else {
+    $(this).attr('href', 'https://www.edx.org/course');
+  }
+});
+</script>

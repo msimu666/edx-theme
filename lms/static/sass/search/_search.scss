@@ -42,6 +42,10 @@
             color: $ee-green-lighter;
         }
     }
+    .search-button:active, 
+    .search-button:focus {
+        box-shadow: none;
+    }
     .cancel-button {
         display: none;
     }
